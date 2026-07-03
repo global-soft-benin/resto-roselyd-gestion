@@ -1,0 +1,2339 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1">
+<title>Restaurant RoseLid Gestion</title>
+<meta name="description" content="Application professionnelle de gestion de restaurant : caisse, stock, personnel, rapports, factures.">
+<meta name="theme-color" content="#4A1222">
+
+<!-- ============================================================
+     PWA : manifeste + icônes
+     Le fichier manifest.json doit être placé à côté d'index.html
+     ============================================================ -->
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAJFklEQVR4nO1bW4wcRxU91dM7szOzDy/x7hoCBAiIICQ/gs3jwz/GCvsiySIFeRGSI5QvS1kJCUEE+QwSBCSkBCGE+PFHEhGQH9JmcULihA8wSgiyE+VjJYxJ4oeM4931vmbnWXx0V3dV9a1Hjzdf9l31znTVrVv3nLpVdbunm+2sbOeIhSWf4ltcxgzlhD4AMPVUrYOlMhYObq7TqmRdTpVzulyUhaljWQcF+G6B+4ClhGonHBd9CCKELgdPWnG5nHEwiQQGluhyxATo4JPuDeBtwE2gu6FCHjnZLgd3EqEAjkkQNmUSQh/wplG3AacAP/WbQRopIbNHbmRsyKCic5oIKhp4HAYMGgm7Ktu5AlSb7xR4X+B5ALtk9siN5Lu+QijrACfKdD15SuyuDHPAPvI+o+4D/K67D5DllLx7/jRZbiKCIkEuV0iQp4NCgCf4PMBl0NNjJ0hQlBw/9WDynSLDRYQPCQkBNwteB06B7mZHEI7byBBEdEsC21MZ5jbwVMibRl0Ad4G2UWHKAHQyZCKoaLCtC7IO21Md5nlG3jbqJuDdZQPCSf08JcIVDT6RYCXAB7w86qa1ISmzpYiacD3lQzbMbdFgIiFDwL3VEWUXyAveBdwFWk5aTKKTQRHRLQmB7PRWgmeMKeCZ4XDVmWyl3xmmx04oC6/w0wdXAA8lF3gFjAG4LMzyp+qZiVAJ7J6EwGdWusDLDlLO20DqQulSRMj9iHYmEmwSiMaR4dSYDg7wA08Bl531PUDY0CNNtit0dRL0eh1nAE1MoW8Cr4elbkdxXEIo2smHUu+wZ+pbJ8E0FYQEVMIjRA8hU2ToHWRGTAB2TANFIybEFFEuH2w4gBRvqBR6hj4A/PDxKnZ8NBNAGeEcqNc5lhc5Lvy7g3/8rYWrlzsZve//uBejDnt/faWJueMNyJe8HBG5+lY5PXYisz0m+nF7AGB7q6Ocmvs+oQ8A35go4r6JotL5U0/WcPH9Dvr6AuzcU8DkdBE9PVFdpwO8PN/E6RebJMiDEz04ON6jlD39i028/15buYqLPrXUlmdTXZmE2SM3Mm2lW2Lm0Ep1VPAMwGq7sQAUPy/rXW6szV2oNa6jBrz9EvDeSuUzs48M7QeAIADum+rB9cX2+ltv8Krex0qrvgD0KPYu1Vcje7EMhqUvDoXlvaZIEOcmDHIUBLa5T4W+Lv0FFbwsHy8NTN1dHjp88VzxyysrnZZcd2A87Cy1am8xFs1H4cdg2Gu0d2dpYOrT5W2HPxKW9xodksS0IMoSqA1sxuJPYtV1OVFAULpykSvrzehw2M/7Ggsrrfr5RNcjKWFIF0e5f5N/tI1UlDwAMK/8Rmc8O2rUs/X91aC02Nw8558kSf0SJPj4KOMj8wAh8uVt0sCD3YwDcXj3D2Zbrax16k3eXm3zzkbqlMNe8pnVpJIkAGRyJMS9jxmcco2WLIUCMDKq6l+83FpeWm5vAECb87qe+HiJIwp87EkXQ5T97ozqyvu+FqJSTVtyDn70DzfeEOchC0o+hLLMp59/Nj0lAvTVX2lArFBJemuQapWxr+4PMT6d7utXrrZWn/jVBy+ffWfzMgCUgsK2MAgq0Wi61wHKCRK0ZRrI60CYu0MP+dnjw1N62coyx/z85tVjry6ekpI2Nlqs7hMecI95IGdxWyHONaCb+f/YE9fmHp698tyx5+vrnTjrHdjGcOg75dHvzWz7CgAUg8LAXb2DB/sKpY/5JGHd+uWyGTrqu3IEANY3Oo3nXvrgT+3egd0P3d+/S5SPHajes/K/YOidM4VR1Y7HyBKd3WxEeO0C3conewen3n41/MK1a52GXD55f2lorbj+poh436Tqw5BcBHTjXqfNinPPt5SrpWolKI5/s9i/2Kot5LlTTMm3v1vEk7+uIpSun/JYzEVAt4F2fqGDc/9sK82/vr/6ucqOxoVWp03kiDcnefz8UKcAkDrz5+NtVtvgyY0AxsAenhm892pj/V/Urzl55Xqz9vf/bi4f5UA7T7uuF8Ef/KRsvIEhtsHXXmnW/nIy8mdttYMXT7aDB2fSLu/5bHHkd7+9Y2RjnfO1VbCRHXTwUtvqVomTgOjaWS/j+OVPa0kixMCw1KydXWptnpP1PtE7MFUOesri/M0zbbx+prn5n9rS8TbnycJYLvSMfKp3cJynHeBac/3s9WZNtVcamCoF4R1cihXxI2ezybO3meCeDmF0Q6H7hehSffVko9NeBoA//v7Owx5NeoHyjFuttBvAbqrmoUcuHfV20CFsX98olxNQOR3+1tjJSEkoM5bZshjStPPnT1e2yi+rPPbohnIbjLpFpt8eO3bqAeXWmKhLpoAp1PXosOn96NGNLEHE/UaX+P6wSS2aVMjb9Lx2AZtRblKw6ItD70Mu99oReH4ydDES8O7508qTGUA2rNTO6NHhXB1B/eElnQxZR29L2Vd9UP0UQj1LICTQjclPW5g60utEFNic1B9SMP2Z9DN2HaNv8l99moSrEWALGdu99+TcQIIoe+aFSWVUdXnmhcnk0Nu6wJv8s2EBgIByRrAkpkHeDE13Si57dn4Sz86nRMgHZUO2040f+g8jugSysu501mD86YgCPRJ0mzMTc9bwl/vTR36rRl+0jdaAHFHgQ4I+HWS9QxNzRudm4rpDE3PZ6OEEIQ5/XKPPOfQ1gGaQ2hFMnaa2on9RoqJa5JZD94dzdc5TflIPVFErP+VnQD1KJsS0I1AhRi16SjQkZNHhrtpXgZts23yw4QBSvOxL1RHuytpcvxRHbYkyLe/Lc8VBRYNeJ4+8K/QzUycuCKhC11QgV3mujTqyo20LfdNUICPKEzxVr+MMbCumEDmEfEjIOKv92YTSzZDiCZ4KfV2y26AhClwkyCNjIsIE0kQOBdwUad0+LBn4KPmQIOvZiKBC3TkNCFvp95t7UvT2s8K3nxa/1d8XuOXfGLn9ztCt/tbYLf/e4K745ekMYCISZD3Anwghed8c1cUHeKZcLuPZMrazsp1T9/rFF/IpbR2shQi9bR5x7QiAClyuy0wPAjwQ/y7AYwc5ovv7SXhwRC8ex+7LekAKNrm0ZKpzMhkmML6SSZMNwPW+5AVP1+UA/g/9hCYRj5sa2AAAAABJRU5ErkJggg==">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="RoseLid Gestion">
+<meta name="mobile-web-app-capable" content="yes">
+
+<!-- ============================================================
+     Polices Google Fonts : Playfair Display (titres) + Inter (texte)
+     ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- ============================================================
+     Librairies externes (CDN) : Firebase, PDF, QR Code, Word (docx), graphiques
+     ============================================================ -->
+<script type="module">
+  // Firebase SDK modulaire (v10) — chargé en tout premier pour être prêt tôt
+  window.__fb = {};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.4/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+
+<style>
+/* =====================================================================
+   RESTAURANT ROSELID GESTION — FEUILLE DE STYLE
+   Design "Premium" — Palette officielle :
+     Bordeaux profond   #4A1222
+     Or métallisé       #C9A227
+     Blanc cassé        #F7F3EC
+     Anthracite         #2B2B2E
+     Vert émeraude      #0F7A5A
+     Orange ambré       #E08A1E
+     Rouge rubis        #9E1B32
+   ===================================================================== */
+
+:root{
+  --bordeaux: #4A1222;
+  --bordeaux-dark: #2E0A14;
+  --bordeaux-light: #6B1E30;
+  --or: #C9A227;
+  --or-clair: #E8C569;
+  --creme: #F7F3EC;
+  --creme-2: #EFE8DA;
+  --anthracite: #2B2B2E;
+  --anthracite-2: #3D3D42;
+  --emeraude: #0F7A5A;
+  --emeraude-clair: #16A876;
+  --ambre: #E08A1E;
+  --rubis: #9E1B32;
+  --blanc: #FFFFFF;
+  --gris-txt: #6B6560;
+  --gris-bord: #E4DDD0;
+
+  --radius-sm: 10px;
+  --radius: 16px;
+  --radius-lg: 22px;
+  --ombre-sm: 0 2px 8px rgba(46,10,20,.08);
+  --ombre: 0 8px 24px rgba(46,10,20,.12);
+  --ombre-lg: 0 20px 48px rgba(46,10,20,.20);
+
+  --police-titre: 'Playfair Display', Georgia, serif;
+  --police-texte: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+body{
+  font-family: var(--police-texte);
+  background: var(--creme);
+  color: var(--anthracite);
+  min-height:100vh;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{ max-width:100%; display:block; }
+button{ font-family:inherit; cursor:pointer; }
+input,select,textarea{ font-family:inherit; }
+a{ color:inherit; text-decoration:none; }
+::-webkit-scrollbar{ width:8px; height:8px; }
+::-webkit-scrollbar-thumb{ background:var(--or); border-radius:8px; }
+::-webkit-scrollbar-track{ background:transparent; }
+:focus-visible{ outline:3px solid var(--or); outline-offset:2px; }
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:.01ms !important; transition-duration:.01ms !important; }
+}
+
+/* ---------- Écran de chargement ---------- */
+#ecran-chargement{
+  position:fixed; inset:0; z-index:9999;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px;
+  background: radial-gradient(circle at 50% 35%, var(--bordeaux-light), var(--bordeaux-dark) 75%);
+  color:var(--creme);
+  transition: opacity .5s ease, visibility .5s ease;
+}
+#ecran-chargement.masque{ opacity:0; visibility:hidden; pointer-events:none; }
+.logo-anim{
+  width:96px; height:96px; border-radius:50%;
+  border:3px solid var(--or);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--police-titre); font-weight:800; font-size:34px; color:var(--or);
+  box-shadow:0 0 0 6px rgba(201,162,39,.15);
+  animation: pulse-logo 1.8s ease-in-out infinite;
+}
+@keyframes pulse-logo{ 0%,100%{ transform:scale(1);} 50%{ transform:scale(1.06);} }
+.chargement-texte{ font-family:var(--police-titre); font-size:15px; letter-spacing:2px; text-transform:uppercase; opacity:.85; }
+.barre-chargement{ width:180px; height:3px; background:rgba(255,255,255,.2); border-radius:3px; overflow:hidden; }
+.barre-chargement::after{
+  content:''; display:block; width:40%; height:100%; background:var(--or);
+  animation: glisse 1.1s ease-in-out infinite;
+}
+@keyframes glisse{ 0%{ margin-left:-40%;} 100%{ margin-left:100%;} }
+
+/* ---------- Écran de connexion ---------- */
+#ecran-connexion{
+  position:fixed; inset:0; z-index:900;
+  display:none;
+  align-items:center; justify-content:center;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(201,162,39,.10), transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(201,162,39,.08), transparent 45%),
+    linear-gradient(160deg, var(--bordeaux-dark), var(--bordeaux) 55%, var(--bordeaux-light));
+  padding:20px;
+}
+.carte-connexion{
+  width:100%; max-width:400px;
+  background: rgba(247,243,236,.98);
+  border-radius: var(--radius-lg);
+  padding:36px 30px 30px;
+  box-shadow: var(--ombre-lg);
+  animation: apparition .5s ease both;
+  position:relative;
+  overflow:hidden;
+}
+.carte-connexion::before{
+  content:''; position:absolute; top:0; left:0; right:0; height:5px;
+  background:linear-gradient(90deg, var(--or), var(--or-clair), var(--or));
+}
+@keyframes apparition{ from{ opacity:0; transform:translateY(18px);} to{ opacity:1; transform:translateY(0);} }
+.logo-connexion{
+  display:flex; flex-direction:column; align-items:center; gap:10px; margin-bottom:22px;
+}
+.logo-cercle{
+  width:66px; height:66px; border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, var(--bordeaux-light), var(--bordeaux-dark));
+  border:2px solid var(--or);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--police-titre); font-weight:800; color:var(--or); font-size:24px;
+}
+.logo-titre{ font-family:var(--police-titre); font-weight:700; font-size:20px; color:var(--bordeaux); text-align:center; line-height:1.25; }
+.logo-soustitre{ font-size:11.5px; letter-spacing:2.2px; text-transform:uppercase; color:var(--or); font-weight:700; }
+
+.champ{ margin-bottom:16px; }
+.champ label{ display:block; font-size:12.5px; font-weight:600; color:var(--anthracite); margin-bottom:6px; letter-spacing:.3px; }
+.champ input, .champ select, .champ textarea{
+  width:100%; padding:12px 14px; border:1.5px solid var(--gris-bord); border-radius:var(--radius-sm);
+  font-size:14.5px; background:var(--blanc); color:var(--anthracite);
+  transition:border-color .2s, box-shadow .2s;
+}
+.champ input:focus, .champ select:focus, .champ textarea:focus{
+  border-color:var(--or); box-shadow:0 0 0 3px rgba(201,162,39,.18);
+}
+.champ-erreur{ color:var(--rubis); font-size:12px; margin-top:5px; display:none; }
+
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  padding:12px 20px; border:none; border-radius:var(--radius-sm);
+  font-weight:700; font-size:14px; letter-spacing:.2px;
+  transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease, background .2s;
+  white-space:nowrap;
+}
+.btn:active{ transform:scale(.97); }
+.btn-primaire{ background:linear-gradient(135deg, var(--bordeaux-light), var(--bordeaux)); color:var(--creme); box-shadow:var(--ombre-sm); }
+.btn-primaire:hover{ box-shadow:var(--ombre); }
+.btn-or{ background:linear-gradient(135deg, var(--or-clair), var(--or)); color:var(--bordeaux-dark); box-shadow:var(--ombre-sm); }
+.btn-or:hover{ box-shadow:var(--ombre); }
+.btn-emeraude{ background:linear-gradient(135deg, var(--emeraude-clair), var(--emeraude)); color:#fff; }
+.btn-ambre{ background:linear-gradient(135deg, #F3A94A, var(--ambre)); color:#3a2205; }
+.btn-rubis{ background:linear-gradient(135deg, #C4364F, var(--rubis)); color:#fff; }
+.btn-fantome{ background:transparent; color:var(--bordeaux); border:1.5px solid var(--gris-bord); }
+.btn-fantome:hover{ border-color:var(--or); }
+.btn-sm{ padding:8px 14px; font-size:12.5px; border-radius:8px; }
+.btn-icone{ width:38px; height:38px; padding:0; border-radius:10px; }
+.btn-large{ width:100%; padding:14px; font-size:15px; }
+.btn[disabled]{ opacity:.55; pointer-events:none; }
+
+.connexion-erreur{
+  display:none; background:#FBE7E9; border:1px solid var(--rubis); color:#7A1224;
+  padding:10px 12px; border-radius:10px; font-size:13px; margin-bottom:14px;
+}
+.connexion-pied{ text-align:center; margin-top:18px; font-size:11.5px; color:var(--gris-txt); }
+
+/* ---------- Coquille de l'application ---------- */
+#app{ display:none; min-height:100vh; }
+.shell{ display:flex; min-height:100vh; }
+
+/* Barre latérale */
+.sidebar{
+  width:252px; flex-shrink:0;
+  background:linear-gradient(180deg, var(--bordeaux-dark), var(--bordeaux) 60%, var(--bordeaux-dark));
+  color:var(--creme);
+  display:flex; flex-direction:column;
+  position:fixed; top:0; bottom:0; left:0; z-index:200;
+  transition:transform .3s ease;
+}
+.sidebar-tete{ padding:22px 20px 16px; display:flex; align-items:center; gap:12px; border-bottom:1px solid rgba(201,162,39,.25); }
+.sidebar-logo{
+  width:44px; height:44px; border-radius:50%; flex-shrink:0;
+  background:radial-gradient(circle at 35% 30%, var(--bordeaux-light), var(--bordeaux-dark));
+  border:2px solid var(--or); display:flex; align-items:center; justify-content:center;
+  font-family:var(--police-titre); font-weight:800; color:var(--or); font-size:16px;
+}
+.sidebar-nom{ font-family:var(--police-titre); font-weight:700; font-size:15px; line-height:1.2; }
+.sidebar-nom small{ display:block; font-family:var(--police-texte); font-weight:600; font-size:9.5px; letter-spacing:1.6px; color:var(--or); text-transform:uppercase; margin-top:2px; }
+
+.sidebar-profil{ padding:14px 20px; border-bottom:1px solid rgba(201,162,39,.15); }
+.profil-nom{ font-weight:700; font-size:13.5px; }
+.profil-role{
+  display:inline-block; margin-top:5px; font-size:10px; font-weight:700; letter-spacing:.6px; text-transform:uppercase;
+  padding:3px 9px; border-radius:20px; background:rgba(201,162,39,.2); color:var(--or-clair);
+}
+
+.nav{ flex:1; overflow-y:auto; padding:14px 12px; }
+.nav-item{
+  display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:11px;
+  color:rgba(247,243,236,.82); font-size:13.5px; font-weight:600; margin-bottom:3px;
+  transition:background .2s, color .2s; cursor:pointer; border:none; background:transparent; width:100%; text-align:left;
+}
+.nav-item .ic{ font-size:17px; width:20px; text-align:center; }
+.nav-item:hover{ background:rgba(201,162,39,.12); color:var(--creme); }
+.nav-item.actif{ background:linear-gradient(90deg, rgba(201,162,39,.28), rgba(201,162,39,.08)); color:var(--or-clair); box-shadow:inset 3px 0 0 var(--or); }
+.nav-section-titre{ font-size:10px; letter-spacing:1.6px; text-transform:uppercase; color:rgba(247,243,236,.4); margin:14px 14px 6px; font-weight:700; }
+
+.sidebar-pied{ padding:14px 20px; border-top:1px solid rgba(201,162,39,.15); }
+.btn-deconnexion{
+  width:100%; background:rgba(158,27,50,.18); color:#FFD8DE; border:1px solid rgba(158,27,50,.4);
+  padding:10px; border-radius:10px; font-size:12.5px; font-weight:700; display:flex; align-items:center; justify-content:center; gap:8px;
+}
+.btn-deconnexion:hover{ background:rgba(158,27,50,.32); }
+
+/* Zone principale */
+.contenu-principal{ flex:1; margin-left:252px; display:flex; flex-direction:column; min-height:100vh; }
+.topbar{
+  height:66px; background:var(--blanc); border-bottom:1px solid var(--gris-bord);
+  display:flex; align-items:center; justify-content:space-between; padding:0 26px;
+  position:sticky; top:0; z-index:150; box-shadow:0 1px 2px rgba(0,0,0,.02);
+}
+.topbar-titre{ font-family:var(--police-titre); font-weight:700; font-size:20px; color:var(--bordeaux); }
+.topbar-droite{ display:flex; align-items:center; gap:12px; }
+.btn-menu-mobile{ display:none; background:none; border:none; font-size:22px; color:var(--bordeaux); }
+.horloge-topbar{ font-size:12.5px; color:var(--gris-txt); font-weight:600; }
+.badge-cloche{ position:relative; }
+.badge-cloche .point{
+  position:absolute; top:-3px; right:-3px; width:9px; height:9px; border-radius:50%;
+  background:var(--rubis); border:2px solid #fff; display:none;
+}
+.badge-cloche.a-alertes .point{ display:block; }
+
+.zone-vues{ flex:1; padding:24px; max-width:1400px; width:100%; margin:0 auto; }
+.vue{ display:none; animation: apparition .35s ease both; }
+.vue.actif{ display:block; }
+
+/* ---------- Cartes / composants génériques ---------- */
+.carte{ background:var(--blanc); border-radius:var(--radius); box-shadow:var(--ombre-sm); padding:20px; border:1px solid rgba(228,221,208,.6); }
+.carte-titre{ font-family:var(--police-titre); font-weight:700; font-size:17px; color:var(--bordeaux); margin-bottom:14px; display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+
+.grille-stats{ display:grid; grid-template-columns:repeat(auto-fit, minmax(190px,1fr)); gap:16px; margin-bottom:22px; }
+.stat-carte{
+  background:var(--blanc); border-radius:var(--radius); padding:18px; box-shadow:var(--ombre-sm);
+  border-left:4px solid var(--or); position:relative; overflow:hidden;
+}
+.stat-carte .stat-icone{ width:38px; height:38px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:18px; margin-bottom:10px; }
+.stat-carte .stat-valeur{ font-family:var(--police-titre); font-weight:800; font-size:23px; color:var(--anthracite); }
+.stat-carte .stat-label{ font-size:11.5px; color:var(--gris-txt); font-weight:600; margin-top:3px; }
+.stat-carte.c-bordeaux{ border-left-color:var(--bordeaux); } .stat-carte.c-bordeaux .stat-icone{ background:rgba(74,18,34,.1); color:var(--bordeaux); }
+.stat-carte.c-or{ border-left-color:var(--or); } .stat-carte.c-or .stat-icone{ background:rgba(201,162,39,.15); color:#9c7e17; }
+.stat-carte.c-emeraude{ border-left-color:var(--emeraude); } .stat-carte.c-emeraude .stat-icone{ background:rgba(15,122,90,.12); color:var(--emeraude); }
+.stat-carte.c-ambre{ border-left-color:var(--ambre); } .stat-carte.c-ambre .stat-icone{ background:rgba(224,138,30,.15); color:var(--ambre); }
+.stat-carte.c-rubis{ border-left-color:var(--rubis); } .stat-carte.c-rubis .stat-icone{ background:rgba(158,27,50,.12); color:var(--rubis); }
+.stat-carte.c-anthracite{ border-left-color:var(--anthracite); } .stat-carte.c-anthracite .stat-icone{ background:rgba(43,43,46,.1); color:var(--anthracite); }
+
+.grille-graphiques{ display:grid; grid-template-columns:2fr 1fr; gap:16px; margin-bottom:22px; }
+@media (max-width:1000px){ .grille-graphiques{ grid-template-columns:1fr; } }
+.zone-graph{ position:relative; height:260px; }
+
+/* Tableaux */
+.zone-tableau{ overflow-x:auto; }
+table.tbl{ width:100%; border-collapse:collapse; font-size:13px; }
+table.tbl th{ text-align:left; padding:11px 12px; background:var(--creme-2); color:var(--bordeaux); font-weight:700; font-size:11.5px; text-transform:uppercase; letter-spacing:.4px; white-space:nowrap; }
+table.tbl th:first-child{ border-radius:8px 0 0 8px; } table.tbl th:last-child{ border-radius:0 8px 8px 0; }
+table.tbl td{ padding:11px 12px; border-bottom:1px solid var(--gris-bord); vertical-align:middle; }
+table.tbl tr:hover td{ background:rgba(201,162,39,.05); }
+table.tbl .cell-photo{ width:34px; height:34px; border-radius:8px; object-fit:cover; background:var(--creme-2); }
+
+/* Badges de statut */
+.badge{ display:inline-flex; align-items:center; gap:5px; padding:4px 10px; border-radius:20px; font-size:11px; font-weight:700; }
+.badge::before{ content:''; width:7px; height:7px; border-radius:50%; }
+.badge-vert{ background:rgba(15,122,90,.12); color:var(--emeraude); } .badge-vert::before{ background:var(--emeraude); }
+.badge-orange{ background:rgba(224,138,30,.14); color:#9c5c0c; } .badge-orange::before{ background:var(--ambre); }
+.badge-rouge{ background:rgba(158,27,50,.12); color:var(--rubis); } .badge-rouge::before{ background:var(--rubis); }
+.badge-gris{ background:rgba(107,101,96,.12); color:var(--gris-txt); } .badge-gris::before{ background:var(--gris-txt); }
+.badge-or{ background:rgba(201,162,39,.18); color:#8a6e13; } .badge-or::before{ background:var(--or); }
+
+/* Barre d'action / recherche / filtres */
+.barre-outils{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:16px; }
+.recherche-boite{ position:relative; flex:1; min-width:200px; }
+.recherche-boite input{ width:100%; padding:11px 14px 11px 38px; border:1.5px solid var(--gris-bord); border-radius:11px; font-size:13.5px; background:var(--blanc); }
+.recherche-boite .ic-recherche{ position:absolute; left:13px; top:50%; transform:translateY(-50%); color:var(--gris-txt); }
+.select-filtre{ padding:11px 14px; border:1.5px solid var(--gris-bord); border-radius:11px; font-size:13px; background:var(--blanc); color:var(--anthracite); }
+
+/* Onglets */
+.onglets{ display:flex; gap:6px; border-bottom:2px solid var(--gris-bord); margin-bottom:18px; overflow-x:auto; }
+.onglet{ padding:11px 16px; font-size:13px; font-weight:700; color:var(--gris-txt); border:none; background:none; border-bottom:2.5px solid transparent; margin-bottom:-2px; white-space:nowrap; }
+.onglet.actif{ color:var(--bordeaux); border-bottom-color:var(--or); }
+
+/* Indicateur de stock (barre) */
+.barre-stock{ width:100%; height:7px; border-radius:6px; background:var(--gris-bord); overflow:hidden; margin-top:6px; }
+.barre-stock > div{ height:100%; border-radius:6px; transition:width .3s; }
+
+/* ---------- Modales ---------- */
+.overlay-modale{
+  position:fixed; inset:0; background:rgba(46,10,20,.55); backdrop-filter:blur(2px);
+  display:none; align-items:center; justify-content:center; z-index:800; padding:16px;
+}
+.overlay-modale.actif{ display:flex; }
+.modale{
+  background:var(--blanc); border-radius:var(--radius-lg); width:100%; max-width:560px;
+  max-height:90vh; display:flex; flex-direction:column; box-shadow:var(--ombre-lg); animation:apparition .3s ease both;
+}
+.modale.modale-large{ max-width:820px; }
+.modale.modale-xl{ max-width:1020px; }
+.modale-tete{ padding:20px 24px; border-bottom:1px solid var(--gris-bord); display:flex; align-items:center; justify-content:space-between; }
+.modale-titre{ font-family:var(--police-titre); font-weight:700; font-size:18px; color:var(--bordeaux); }
+.modale-fermer{ background:var(--creme-2); border:none; width:32px; height:32px; border-radius:9px; font-size:16px; color:var(--anthracite); }
+.modale-corps{ padding:22px 24px; overflow-y:auto; }
+.modale-pied{ padding:16px 24px; border-top:1px solid var(--gris-bord); display:flex; justify-content:flex-end; gap:10px; }
+.grille-2{ display:grid; grid-template-columns:1fr 1fr; gap:14px; } @media (max-width:520px){ .grille-2{ grid-template-columns:1fr; } }
+.grille-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; } @media (max-width:600px){ .grille-3{ grid-template-columns:1fr 1fr; } }
+
+/* ---------- Toasts ---------- */
+#zone-toasts{ position:fixed; top:18px; right:18px; z-index:1000; display:flex; flex-direction:column; gap:10px; max-width:340px; }
+.toast{
+  background:var(--anthracite); color:#fff; padding:13px 16px; border-radius:12px; font-size:13px; font-weight:600;
+  box-shadow:var(--ombre-lg); display:flex; align-items:center; gap:10px; animation:toast-in .3s ease both;
+  border-left:4px solid var(--or);
+}
+.toast.succes{ border-left-color:var(--emeraude); } .toast.erreur{ border-left-color:var(--rubis); } .toast.alerte{ border-left-color:var(--ambre); }
+@keyframes toast-in{ from{ opacity:0; transform:translateX(30px);} to{ opacity:1; transform:translateX(0);} }
+
+/* ---------- Alerte fermeture anticipée ---------- */
+.alerte-fermeture{
+  position:fixed; inset:0; background:rgba(158,27,50,.92); z-index:1500; display:none;
+  align-items:center; justify-content:center; text-align:center; color:#fff; padding:24px;
+}
+.alerte-fermeture.actif{ display:flex; }
+.alerte-fermeture h2{ font-family:var(--police-titre); font-size:30px; margin-bottom:10px; }
+
+/* ---------- Facture ---------- */
+.facture-doc{ background:#fff; padding:30px; max-width:420px; margin:0 auto; font-size:12.5px; color:#222; }
+.facture-entete{ text-align:center; border-bottom:2px solid var(--bordeaux); padding-bottom:14px; margin-bottom:14px; }
+.facture-entete .fl{ width:56px; height:56px; border-radius:50%; margin:0 auto 8px; background:radial-gradient(circle at 35% 30%, var(--bordeaux-light), var(--bordeaux-dark)); border:2px solid var(--or); display:flex; align-items:center; justify-content:center; color:var(--or); font-family:var(--police-titre); font-weight:800; }
+.facture-entete h3{ font-family:var(--police-titre); color:var(--bordeaux); font-size:17px; }
+.facture-lignes{ width:100%; border-collapse:collapse; margin:12px 0; font-size:11.5px; }
+.facture-lignes th{ text-align:left; border-bottom:1px solid #ccc; padding:5px 2px; font-size:10px; text-transform:uppercase; color:#777; }
+.facture-lignes td{ padding:5px 2px; border-bottom:1px dashed #ddd; }
+.facture-total{ display:flex; justify-content:space-between; font-weight:800; font-size:15px; color:var(--bordeaux); border-top:2px solid var(--bordeaux); padding-top:8px; margin-top:6px; }
+.facture-qr{ display:flex; justify-content:center; margin:14px 0; }
+.facture-pied{ text-align:center; font-size:10.5px; color:#888; margin-top:12px; }
+
+/* ---------- Bannière installation PWA ---------- */
+#banniere-install{
+  position:fixed; bottom:16px; left:50%; transform:translateX(-50%); z-index:900;
+  background:var(--bordeaux); color:#fff; padding:14px 18px; border-radius:14px; box-shadow:var(--ombre-lg);
+  display:none; align-items:center; gap:14px; max-width:92vw;
+}
+#banniere-install.actif{ display:flex; }
+#banniere-install .txt{ font-size:12.5px; font-weight:600; max-width:220px; }
+
+/* ---------- Divers ---------- */
+.vide-etat{ text-align:center; padding:40px 20px; color:var(--gris-txt); }
+.vide-etat .ic{ font-size:38px; margin-bottom:10px; }
+.chip-role{ font-size:10px; padding:3px 8px; border-radius:20px; font-weight:700; text-transform:uppercase; }
+.chip-admin{ background:rgba(158,27,50,.12); color:var(--rubis); }
+.chip-gestionnaire{ background:rgba(224,138,30,.15); color:#9c5c0c; }
+.chip-vendeur{ background:rgba(15,122,90,.12); color:var(--emeraude); }
+.aide-champ{ font-size:11.5px; color:var(--gris-txt); margin-top:4px; }
+.panier-ligne{ display:flex; align-items:center; gap:10px; padding:10px 0; border-bottom:1px solid var(--gris-bord); }
+.panier-ligne .nom{ flex:1; font-size:13px; font-weight:600; }
+.qte-ctrl{ display:flex; align-items:center; gap:6px; }
+.qte-ctrl button{ width:26px; height:26px; border-radius:7px; border:1px solid var(--gris-bord); background:var(--creme); font-weight:800; }
+.carte-produit-vente{
+  border:1.5px solid var(--gris-bord); border-radius:12px; padding:12px; cursor:pointer; transition:all .15s;
+  background:#fff;
+}
+.carte-produit-vente:hover{ border-color:var(--or); box-shadow:var(--ombre-sm); transform:translateY(-2px); }
+.carte-produit-vente .nom{ font-weight:700; font-size:12.5px; }
+.carte-produit-vente .prix{ color:var(--emeraude); font-weight:800; font-size:14px; margin-top:4px; }
+.grille-produits-vente{ display:grid; grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:10px; }
+
+/* Responsive */
+@media (max-width:960px){
+  .sidebar{ transform:translateX(-100%); }
+  .sidebar.ouvert{ transform:translateX(0); }
+  .contenu-principal{ margin-left:0; }
+  .btn-menu-mobile{ display:block; }
+  .zone-vues{ padding:16px; }
+  .grille-graphiques{ grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     ÉCRAN DE CHARGEMENT
+     ============================================================ -->
+<div id="ecran-chargement">
+  <div class="logo-anim">RL</div>
+  <div class="chargement-texte">RoseLid Gestion</div>
+  <div class="barre-chargement"></div>
+</div>
+
+<!-- ============================================================
+     ALERTE FERMETURE ANTICIPÉE DU RESTAURANT
+     ============================================================ -->
+<div class="alerte-fermeture" id="alerte-fermeture">
+  <div>
+    <h2>⚠️ FERMETURE ANTICIPÉE</h2>
+    <p id="txt-alerte-fermeture" style="font-size:15px;max-width:420px;margin:0 auto 18px;"></p>
+    <button class="btn btn-or" onclick="fermerAlerteFermeture()">J'ai compris</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     ÉCRAN DE CONNEXION
+     ============================================================ -->
+<div id="ecran-connexion">
+  <div class="carte-connexion">
+    <div class="logo-connexion">
+      <div class="logo-cercle">RL</div>
+      <div class="logo-titre">Restaurant RoseLid<br>Gestion</div>
+      <div class="logo-soustitre">Espace professionnel</div>
+    </div>
+    <div class="connexion-erreur" id="connexion-erreur"></div>
+    <form id="form-connexion" onsubmit="return false;">
+      <div class="champ">
+        <label>Adresse e-mail</label>
+        <input type="email" id="connexion-email" autocomplete="username" placeholder="vous@exemple.com" required>
+      </div>
+      <div class="champ">
+        <label>Mot de passe</label>
+        <input type="password" id="connexion-mdp" autocomplete="current-password" placeholder="••••••••" required>
+      </div>
+      <button type="submit" class="btn btn-or btn-large" id="btn-connexion" onclick="connexionUtilisateur()">Se connecter</button>
+    </form>
+    <div class="connexion-pied">Restaurant RoseLid Gestion © <span id="annee-pied"></span><br>Accès réservé au personnel autorisé.</div>
+  </div>
+</div>
+
+<!-- ============================================================
+     APPLICATION PRINCIPALE
+     ============================================================ -->
+<div id="app">
+<div class="shell">
+
+  <!-- ---------- BARRE LATÉRALE ---------- -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-tete">
+      <div class="sidebar-logo">RL</div>
+      <div class="sidebar-nom">Restaurant RoseLid<small>Gestion</small></div>
+    </div>
+    <div class="sidebar-profil">
+      <div class="profil-nom" id="profil-nom">—</div>
+      <span class="profil-role" id="profil-role">—</span>
+    </div>
+    <nav class="nav" id="nav-menu">
+      <!-- Généré dynamiquement en JS selon le rôle (voir construireMenu()) -->
+    </nav>
+    <div class="sidebar-pied">
+      <button class="btn-deconnexion" onclick="deconnexionUtilisateur()">↩ Déconnexion</button>
+    </div>
+  </aside>
+
+  <!-- ---------- ZONE PRINCIPALE ---------- -->
+  <div class="contenu-principal">
+    <header class="topbar">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <button class="btn-menu-mobile" onclick="basculerSidebar()">☰</button>
+        <div class="topbar-titre" id="topbar-titre">Tableau de bord</div>
+      </div>
+      <div class="topbar-droite">
+        <span class="horloge-topbar" id="horloge-topbar">--:--</span>
+        <button class="btn btn-icone btn-fantome badge-cloche" id="btn-notifs" onclick="ouvrirNotifications()" title="Alertes stock">🔔<span class="point"></span></button>
+      </div>
+    </header>
+
+    <main class="zone-vues" id="zone-vues">
+
+      <!-- ============ VUE : TABLEAU DE BORD ============ -->
+      <section class="vue" id="vue-dashboard">
+        <div class="grille-stats" id="dash-stats"></div>
+        <div class="grille-graphiques">
+          <div class="carte">
+            <div class="carte-titre">Ventes (7 derniers jours)</div>
+            <div class="zone-graph"><canvas id="chart-ventes-semaine"></canvas></div>
+          </div>
+          <div class="carte">
+            <div class="carte-titre">Répartition du personnel</div>
+            <div class="zone-graph"><canvas id="chart-personnel"></canvas></div>
+          </div>
+        </div>
+        <div class="carte" style="margin-bottom:22px;">
+          <div class="carte-titre">Produits en alerte de stock</div>
+          <div class="zone-tableau"><table class="tbl" id="tbl-alertes-stock"><thead><tr><th>Produit</th><th>Catégorie</th><th>Quantité</th><th>Statut</th></tr></thead><tbody></tbody></table></div>
+        </div>
+      </section>
+
+      <!-- ============ VUE : PERSONNEL ============ -->
+      <section class="vue" id="vue-personnel">
+        <div class="barre-outils">
+          <div class="recherche-boite"><span class="ic-recherche">🔎</span><input type="text" id="recherche-personnel" placeholder="Rechercher un employé..." oninput="rafraichirTablePersonnel()"></div>
+          <button class="btn btn-or" onclick="ouvrirModaleEmploye()" id="btn-nouvel-employe">+ Nouvel employé</button>
+        </div>
+        <div class="carte">
+          <div class="zone-tableau"><table class="tbl" id="tbl-personnel"><thead><tr><th></th><th>Nom</th><th>Fonction</th><th>Téléphone</th><th>Salaire</th><th>Embauché le</th><th>Actions</th></tr></thead><tbody></tbody></table></div>
+        </div>
+      </section>
+
+      <!-- ============ VUE : POINTAGE ============ -->
+      <section class="vue" id="vue-pointage">
+        <div class="grille-stats" id="pointage-stats"></div>
+        <div class="carte" style="margin-bottom:20px;">
+          <div class="carte-titre">Pointer une arrivée / un départ</div>
+          <div class="grille-3">
+            <select class="select-filtre" id="pointage-select-employe"></select>
+            <button class="btn btn-emeraude" onclick="pointerArrivee()">🟢 Pointer l'arrivée</button>
+            <button class="btn btn-ambre" onclick="pointerDepart()">🔶 Pointer le départ</button>
+          </div>
+        </div>
+        <div class="carte" style="margin-bottom:20px;">
+          <div class="carte-titre">Fermeture du restaurant</div>
+          <div class="grille-3">
+            <input type="time" class="champ-heure" id="heure-fermeture-normale" style="padding:11px;border:1.5px solid var(--gris-bord);border-radius:11px;">
+            <button class="btn btn-primaire" onclick="enregistrerHeureFermetureNormale()">Définir l'heure normale</button>
+            <button class="btn btn-rubis" onclick="enregistrerFermetureReelle()">🔒 Enregistrer la fermeture de ce soir</button>
+          </div>
+        </div>
+        <div class="carte">
+          <div class="carte-titre">Historique des pointages du jour</div>
+          <div class="zone-tableau"><table class="tbl" id="tbl-pointages"><thead><tr><th>Employé</th><th>Arrivée</th><th>Départ</th><th>Retard</th><th>Temps travaillé</th><th>Statut</th></tr></thead><tbody></tbody></table></div>
+        </div>
+      </section>
+
+      <!-- ============ VUE : STOCK ============ -->
+      <section class="vue" id="vue-stock">
+        <div class="barre-outils">
+          <div class="recherche-boite"><span class="ic-recherche">🔎</span><input type="text" id="recherche-stock" placeholder="Rechercher un produit, un code..." oninput="rafraichirTableStock()"></div>
+          <select class="select-filtre" id="filtre-categorie-stock" onchange="rafraichirTableStock()"><option value="">Toutes catégories</option></select>
+          <button class="btn btn-or" onclick="ouvrirModaleProduit()">+ Nouveau produit</button>
+        </div>
+        <div class="carte">
+          <div class="zone-tableau"><table class="tbl" id="tbl-stock"><thead><tr><th></th><th>Produit</th><th>Catégorie</th><th>Prix vente</th><th>Quantité / Stock</th><th>Statut</th><th>Actions</th></tr></thead><tbody></tbody></table></div>
+        </div>
+      </section>
+
+      <!-- ============ VUE : BOISSONS ============ -->
+      <section class="vue" id="vue-boissons">
+        <div class="barre-outils">
+          <div class="recherche-boite"><span class="ic-recherche">🔎</span><input type="text" id="recherche-boissons" placeholder="Rechercher une boisson..." oninput="rafraichirTableBoissons()"></div>
+          <button class="btn btn-or" onclick="ouvrirModaleBoisson()">+ Nouvelle boisson</button>
+        </div>
+        <div class="carte">
+          <div class="zone-tableau"><table class="tbl" id="tbl-boissons"><thead><tr><th></th><th>Boisson</th><th>Catégorie</th><th>Prix vente</th><th>Quantité / Stock</th><th>Statut</th><th>Actions</th></tr></thead><tbody></tbody></table></div>
+        </div>
+      </section>
+
+      <!-- ============ VUE : VENTES (CAISSE) ============ -->
+      <section class="vue" id="vue-ventes">
+        <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:18px;align-items:flex-start;" id="grille-caisse">
+          <div class="carte">
+            <div class="carte-titre">Sélection des articles</div>
+            <div class="recherche-boite" style="margin-bottom:14px;"><span class="ic-recherche">🔎</span><input type="text" id="recherche-caisse" placeholder="Rechercher un produit ou une boisson..." oninput="rafraichirGrilleCaisse()"></div>
+            <div class="grille-produits-vente" id="grille-caisse-produits"></div>
+          </div>
+          <div class="carte">
+            <div class="carte-titre">🧾 Panier</div>
+            <div id="panier-lignes" style="max-height:280px;overflow-y:auto;"></div>
+            <div style="margin-top:14px;">
+              <div class="champ"><label>Remise (FCFA)</label><input type="number" id="vente-remise" value="0" min="0" oninput="recalculerPanier()"></div>
+              <div class="champ"><label>TVA (%)</label><input type="number" id="vente-tva" value="0" min="0" oninput="recalculerPanier()"></div>
+              <div class="champ"><label>Nom du client (optionnel)</label><input type="text" id="vente-client"></div>
+            </div>
+            <div style="border-top:2px dashed var(--gris-bord);padding-top:12px;margin-top:6px;font-size:13.5px;">
+              <div style="display:flex;justify-content:space-between;"><span>Sous-total</span><b id="panier-soustotal">0 FCFA</b></div>
+              <div style="display:flex;justify-content:space-between;"><span>Remise</span><b id="panier-remise-aff">0 FCFA</b></div>
+              <div style="display:flex;justify-content:space-between;"><span>TVA</span><b id="panier-tva-aff">0 FCFA</b></div>
+              <div style="display:flex;justify-content:space-between;font-size:18px;color:var(--bordeaux);margin-top:6px;"><span>TOTAL</span><b id="panier-total">0 FCFA</b></div>
+            </div>
+            <button class="btn btn-emeraude btn-large" style="margin-top:14px;" onclick="validerVente()">✔ Encaisser & Générer la facture</button>
+            <button class="btn btn-fantome btn-large" style="margin-top:8px;" onclick="viderPanier()">Vider le panier</button>
+          </div>
+        </div>
+        <div class="carte" style="margin-top:20px;">
+          <div class="carte-titre">Historique des ventes<span style="font-size:12px;font-weight:600;color:var(--gris-txt);" id="compteur-ventes"></span></div>
+          <div class="zone-tableau"><table class="tbl" id="tbl-ventes"><thead><tr><th>N° Facture</th><th>Date</th><th>Vendeur</th><th>Client</th><th>Total</th><th>Actions</th></tr></thead><tbody></tbody></table></div>
+        </div>
+      </section>
+
+      <!-- ============ VUE : RAPPORTS ============ -->
+      <section class="vue" id="vue-rapports">
+        <div class="carte" style="margin-bottom:20px;">
+          <div class="carte-titre">Générer un rapport</div>
+          <div class="grille-3">
+            <select class="select-filtre" id="rapport-type">
+              <option value="journalier">Rapport journalier</option>
+              <option value="hebdomadaire">Rapport hebdomadaire</option>
+              <option value="mensuel">Rapport mensuel</option>
+              <option value="annuel">Rapport annuel</option>
+              <option value="personnel">Rapport du personnel</option>
+              <option value="ventes">Rapport des ventes</option>
+              <option value="financier">Rapport financier</option>
+              <option value="stock">Rapport du stock</option>
+              <option value="benefices">Rapport des bénéfices</option>
+              <option value="pertes">Rapport des pertes</option>
+              <option value="ruptures">Rapport des ruptures</option>
+            </select>
+            <input type="date" class="select-filtre" id="rapport-date">
+            <div style="display:flex;gap:8px;">
+              <button class="btn btn-rubis" style="flex:1" onclick="genererRapport('pdf')">📄 PDF</button>
+              <button class="btn btn-primaire" style="flex:1" onclick="genererRapport('docx')">📝 Word</button>
+            </div>
+          </div>
+          <div style="margin-top:12px;">
+            <button class="btn btn-emeraude btn-sm" onclick="envoyerRapportWhatsApp()">📲 Envoyer le rapport du jour sur WhatsApp</button>
+          </div>
+        </div>
+        <div class="carte" id="apercu-rapport-carte" style="display:none;">
+          <div class="carte-titre">Aperçu</div>
+          <div id="apercu-rapport"></div>
+        </div>
+      </section>
+
+      <!-- ============ VUE : UTILISATEURS (admin) ============ -->
+      <section class="vue" id="vue-utilisateurs">
+        <div class="barre-outils">
+          <div></div>
+          <button class="btn btn-or" onclick="ouvrirModaleUtilisateur()">+ Nouvel utilisateur</button>
+        </div>
+        <div class="carte">
+          <div class="zone-tableau"><table class="tbl" id="tbl-utilisateurs"><thead><tr><th>Nom</th><th>E-mail</th><th>Rôle</th><th>Créé le</th><th>Actions</th></tr></thead><tbody></tbody></table></div>
+        </div>
+      </section>
+
+      <!-- ============ VUE : PARAMÈTRES ============ -->
+      <section class="vue" id="vue-parametres">
+        <div class="onglets">
+          <button class="onglet actif" data-onglet="general" onclick="basculerOngletParametres('general')">Restaurant</button>
+          <button class="onglet" data-onglet="whatsapp" onclick="basculerOngletParametres('whatsapp')">WhatsApp</button>
+          <button class="onglet" data-onglet="donnees" onclick="basculerOngletParametres('donnees')">Sauvegarde & données</button>
+        </div>
+
+        <div class="onglet-contenu" id="onglet-general">
+          <div class="carte" style="max-width:560px;">
+            <div class="carte-titre">Informations du restaurant</div>
+            <div class="champ"><label>Nom du restaurant</label><input type="text" id="param-nom-resto" value="Restaurant RoseLid Gestion"></div>
+            <div class="champ"><label>Adresse</label><input type="text" id="param-adresse-resto" placeholder="Cotonou, Bénin"></div>
+            <div class="champ"><label>Téléphone</label><input type="text" id="param-tel-resto" placeholder="+229 01 96 56 65 15"></div>
+            <div class="champ"><label>Heure normale de fermeture</label><input type="time" id="param-heure-fermeture"></div>
+            <button class="btn btn-or" onclick="enregistrerParametresGeneraux()">Enregistrer</button>
+          </div>
+        </div>
+
+        <div class="onglet-contenu" id="onglet-whatsapp" style="display:none;">
+          <div class="carte" style="max-width:560px;">
+            <div class="carte-titre">Numéros WhatsApp</div>
+            <div class="champ"><label>Numéro de l'administrateur</label><input type="text" id="param-whatsapp-admin" placeholder="+2290196566515"></div>
+            <div id="liste-whatsapp-gestionnaires"></div>
+            <button class="btn btn-fantome btn-sm" onclick="ajouterChampWhatsAppGestionnaire()">+ Ajouter un numéro gestionnaire</button>
+            <div style="margin-top:14px;"><button class="btn btn-or" onclick="enregistrerParametresWhatsApp()">Enregistrer</button></div>
+          </div>
+        </div>
+
+        <div class="onglet-contenu" id="onglet-donnees" style="display:none;">
+          <div class="carte" style="max-width:560px;">
+            <div class="carte-titre">Sauvegarde & restauration</div>
+            <p style="font-size:13px;color:var(--gris-txt);margin-bottom:14px;">Exportez une copie de sécurité de toutes vos données (produits, boissons, personnel, ventes) au format JSON, ou restaurez-les à partir d'un fichier existant.</p>
+            <button class="btn btn-primaire btn-sm" onclick="exporterSauvegardeJSON()">⬇ Exporter la sauvegarde</button>
+            <div style="margin-top:12px;">
+              <input type="file" id="fichier-restauration" accept="application/json" style="display:none;" onchange="restaurerSauvegardeJSON(event)">
+              <button class="btn btn-ambre btn-sm" onclick="document.getElementById('fichier-restauration').click()">⬆ Restaurer une sauvegarde</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+</div>
+
+<!-- ============================================================
+     MODALES
+     ============================================================ -->
+
+<!-- Modale : Employé -->
+<div class="overlay-modale" id="modale-employe">
+  <div class="modale modale-large">
+    <div class="modale-tete"><span class="modale-titre" id="titre-modale-employe">Nouvel employé</span><button class="modale-fermer" onclick="fermerModale('modale-employe')">✕</button></div>
+    <div class="modale-corps">
+      <input type="hidden" id="employe-id">
+      <div class="grille-2">
+        <div class="champ"><label>Nom complet *</label><input type="text" id="employe-nom" required></div>
+        <div class="champ"><label>Fonction *</label><input type="text" id="employe-fonction" required placeholder="Serveur, Cuisinier, Caissier..."></div>
+        <div class="champ"><label>Téléphone</label><input type="text" id="employe-tel"></div>
+        <div class="champ"><label>Date d'embauche</label><input type="date" id="employe-date-embauche"></div>
+        <div class="champ"><label>Salaire (FCFA)</label><input type="number" id="employe-salaire" min="0"></div>
+        <div class="champ"><label>Photo (URL)</label><input type="text" id="employe-photo" placeholder="https://..."></div>
+        <div class="champ"><label>Heure normale d'arrivée</label><input type="time" id="employe-heure-arrivee" value="08:00"></div>
+        <div class="champ"><label>Heure normale de départ</label><input type="time" id="employe-heure-depart" value="18:00"></div>
+      </div>
+      <div class="champ"><label>Observations</label><textarea id="employe-observations" rows="2"></textarea></div>
+    </div>
+    <div class="modale-pied"><button class="btn btn-fantome" onclick="fermerModale('modale-employe')">Annuler</button><button class="btn btn-or" onclick="enregistrerEmploye()">Enregistrer</button></div>
+  </div>
+</div>
+
+<!-- Modale : Fiche employé / historique -->
+<div class="overlay-modale" id="modale-fiche-employe">
+  <div class="modale modale-large">
+    <div class="modale-tete"><span class="modale-titre">Fiche employé</span><button class="modale-fermer" onclick="fermerModale('modale-fiche-employe')">✕</button></div>
+    <div class="modale-corps" id="corps-fiche-employe"></div>
+    <div class="modale-pied"><button class="btn btn-fantome" onclick="fermerModale('modale-fiche-employe')">Fermer</button></div>
+  </div>
+</div>
+
+<!-- Modale : Produit (stock) -->
+<div class="overlay-modale" id="modale-produit">
+  <div class="modale modale-large">
+    <div class="modale-tete"><span class="modale-titre" id="titre-modale-produit">Nouveau produit</span><button class="modale-fermer" onclick="fermerModale('modale-produit')">✕</button></div>
+    <div class="modale-corps">
+      <input type="hidden" id="produit-id">
+      <div class="grille-2">
+        <div class="champ"><label>Nom du produit *</label><input type="text" id="produit-nom" required></div>
+        <div class="champ"><label>Catégorie *</label><input type="text" id="produit-categorie" required placeholder="Plats, Entrées, Desserts..." list="liste-categories"></div>
+        <div class="champ"><label>Prix d'achat (FCFA)</label><input type="number" id="produit-prix-achat" min="0"></div>
+        <div class="champ"><label>Prix de vente (FCFA) *</label><input type="number" id="produit-prix-vente" min="0" required></div>
+        <div class="champ"><label>Quantité en stock *</label><input type="number" id="produit-quantite" min="0" required></div>
+        <div class="champ"><label>Quantité initiale (référence 100%)</label><input type="number" id="produit-quantite-max" min="0"></div>
+        <div class="champ"><label>Code produit</label><input type="text" id="produit-code"></div>
+        <div class="champ"><label>Code-barres</label><input type="text" id="produit-codebarre"></div>
+        <div class="champ"><label>Date d'entrée</label><input type="date" id="produit-date-entree"></div>
+        <div class="champ"><label>Date de sortie</label><input type="date" id="produit-date-sortie"></div>
+        <div class="champ" style="grid-column:1/-1;"><label>Photo (URL)</label><input type="text" id="produit-photo" placeholder="https://..."></div>
+      </div>
+    </div>
+    <div class="modale-pied"><button class="btn btn-fantome" onclick="fermerModale('modale-produit')">Annuler</button><button class="btn btn-or" onclick="enregistrerProduit()">Enregistrer</button></div>
+  </div>
+</div>
+
+<!-- Modale : Boisson -->
+<div class="overlay-modale" id="modale-boisson">
+  <div class="modale modale-large">
+    <div class="modale-tete"><span class="modale-titre" id="titre-modale-boisson">Nouvelle boisson</span><button class="modale-fermer" onclick="fermerModale('modale-boisson')">✕</button></div>
+    <div class="modale-corps">
+      <input type="hidden" id="boisson-id">
+      <div class="grille-2">
+        <div class="champ"><label>Nom de la boisson *</label><input type="text" id="boisson-nom" required></div>
+        <div class="champ"><label>Catégorie *</label><input type="text" id="boisson-categorie" required placeholder="Sodas, Bières, Jus, Vins..."></div>
+        <div class="champ"><label>Prix d'achat (FCFA)</label><input type="number" id="boisson-prix-achat" min="0"></div>
+        <div class="champ"><label>Prix de vente (FCFA) *</label><input type="number" id="boisson-prix-vente" min="0" required></div>
+        <div class="champ"><label>Quantité en stock *</label><input type="number" id="boisson-quantite" min="0" required></div>
+        <div class="champ"><label>Quantité initiale (référence 100%)</label><input type="number" id="boisson-quantite-max" min="0"></div>
+        <div class="champ"><label>Code produit</label><input type="text" id="boisson-code"></div>
+        <div class="champ" style="grid-column:1/-1;"><label>Photo (URL)</label><input type="text" id="boisson-photo" placeholder="https://..."></div>
+      </div>
+    </div>
+    <div class="modale-pied"><button class="btn btn-fantome" onclick="fermerModale('modale-boisson')">Annuler</button><button class="btn btn-or" onclick="enregistrerBoisson()">Enregistrer</button></div>
+  </div>
+</div>
+
+<!-- Modale : Utilisateur -->
+<div class="overlay-modale" id="modale-utilisateur">
+  <div class="modale">
+    <div class="modale-tete"><span class="modale-titre">Nouvel utilisateur</span><button class="modale-fermer" onclick="fermerModale('modale-utilisateur')">✕</button></div>
+    <div class="modale-corps">
+      <div class="champ"><label>Nom complet *</label><input type="text" id="user-nom" required></div>
+      <div class="champ"><label>Adresse e-mail *</label><input type="email" id="user-email" required></div>
+      <div class="champ"><label>Mot de passe temporaire *</label><input type="text" id="user-mdp" required minlength="6"></div>
+      <div class="champ"><label>Rôle *</label>
+        <select id="user-role"><option value="gestionnaire">Gestionnaire</option><option value="vendeur">Vendeur</option></select>
+      </div>
+      <p class="aide-champ">L'utilisateur pourra se connecter immédiatement avec cet e-mail et ce mot de passe.</p>
+    </div>
+    <div class="modale-pied"><button class="btn btn-fantome" onclick="fermerModale('modale-utilisateur')">Annuler</button><button class="btn btn-or" onclick="creerUtilisateur()">Créer le compte</button></div>
+  </div>
+</div>
+
+<!-- Modale : Facture générée -->
+<div class="overlay-modale" id="modale-facture">
+  <div class="modale">
+    <div class="modale-tete"><span class="modale-titre">Facture</span><button class="modale-fermer" onclick="fermerModale('modale-facture')">✕</button></div>
+    <div class="modale-corps"><div id="contenu-facture" class="facture-doc"></div></div>
+    <div class="modale-pied">
+      <button class="btn btn-fantome" onclick="imprimerFacture()">🖨 Imprimer</button>
+      <button class="btn btn-primaire" onclick="telechargerFacturePDF()">📄 PDF</button>
+      <button class="btn btn-emeraude" onclick="partagerFactureWhatsApp()">📲 WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modale : confirmation générique -->
+<div class="overlay-modale" id="modale-confirmation">
+  <div class="modale" style="max-width:400px;">
+    <div class="modale-tete"><span class="modale-titre">Confirmation</span><button class="modale-fermer" onclick="fermerModale('modale-confirmation')">✕</button></div>
+    <div class="modale-corps"><p id="texte-confirmation"></p></div>
+    <div class="modale-pied"><button class="btn btn-fantome" onclick="fermerModale('modale-confirmation')">Annuler</button><button class="btn btn-rubis" id="btn-confirmer-action">Confirmer</button></div>
+  </div>
+</div>
+
+<!-- Modale : notifications -->
+<div class="overlay-modale" id="modale-notifs">
+  <div class="modale">
+    <div class="modale-tete"><span class="modale-titre">Alertes stock</span><button class="modale-fermer" onclick="fermerModale('modale-notifs')">✕</button></div>
+    <div class="modale-corps" id="corps-notifs"></div>
+  </div>
+</div>
+
+<datalist id="liste-categories"></datalist>
+
+<!-- Zone toasts -->
+<div id="zone-toasts"></div>
+
+<!-- Bannière d'installation PWA -->
+<div id="banniere-install">
+  <span style="font-size:22px;">📲</span>
+  <span class="txt">Installez RoseLid Gestion sur votre appareil pour un accès rapide, même hors connexion.</span>
+  <button class="btn btn-or btn-sm" onclick="installerPWA()">Installer</button>
+  <button class="btn btn-fantome btn-sm" style="color:#fff;border-color:rgba(255,255,255,.4);" onclick="masquerBanniereInstall()">Plus tard</button>
+</div>
+
+<!-- QR Code temporaire hors-écran (généré puis capturé en image) -->
+<div id="zone-qr-temp" style="position:fixed;left:-9999px;top:-9999px;"></div>
+
+<script type="module">
+// =====================================================================
+// RESTAURANT ROSELID GESTION — LOGIQUE APPLICATIVE
+// Fichier organisé en sections commentées. Ce script est un module ES,
+// il est chargé directement dans index.html (voir balise <script type="module"> en fin de fichier).
+// =====================================================================
+
+import { initializeApp, deleteApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {
+  getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged,
+  createUserWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {
+  getFirestore, collection, doc, setDoc, addDoc, updateDoc, deleteDoc,
+  getDoc, getDocs, onSnapshot, query, where, orderBy, serverTimestamp,
+  runTransaction, increment
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+// ---------------------------------------------------------------------
+// 1. CONFIGURATION FIREBASE
+// ---------------------------------------------------------------------
+const firebaseConfig = {
+  apiKey: "AIzaSyD3DWmeijJ38PR8HrMJYhjYqH7VWpZ6p_w",
+  authDomain: "restaurant-roselyde.firebaseapp.com",
+  projectId: "restaurant-roselyde",
+  storageBucket: "restaurant-roselyde.firebasestorage.app",
+  messagingSenderId: "473516416698",
+  appId: "1:473516416698:web:5f2e00d59c11d27106ec83"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+// E-mail de l'administrateur principal (accès total, protégé contre la suppression)
+const EMAIL_ADMIN_PRINCIPAL = "restolydgounou@gmail.com";
+const WHATSAPP_ADMIN_DEFAUT = "+2290196566515";
+
+// ---------------------------------------------------------------------
+// 2. ÉTAT GLOBAL DE L'APPLICATION
+// ---------------------------------------------------------------------
+const ETAT = {
+  utilisateur: null,        // { uid, email, nom, role }
+  employes: [],
+  produits: [],
+  boissons: [],
+  ventes: [],
+  pointagesJour: [],
+  utilisateurs: [],
+  parametres: { nomResto: "Restaurant RoseLid Gestion", whatsappGestionnaires: [] },
+  panier: [],                // panier de la caisse en cours
+  vueActive: "dashboard",
+  chartVentes: null,
+  chartPersonnel: null,
+  derniereFacture: null,
+  desabonnements: []         // fonctions de désinscription des écouteurs Firestore temps réel
+};
+
+// ---------------------------------------------------------------------
+// 3. UTILITAIRES GÉNÉRAUX
+// ---------------------------------------------------------------------
+function formaterFCFA(montant) {
+  const n = Number(montant) || 0;
+  return n.toLocaleString('fr-FR', { maximumFractionDigits: 0 }) + " FCFA";
+}
+function formaterDate(d) {
+  if (!d) return "—";
+  const date = (d instanceof Date) ? d : new Date(d);
+  if (isNaN(date)) return "—";
+  return date.toLocaleDateString('fr-FR', { day:'2-digit', month:'2-digit', year:'numeric' });
+}
+function formaterDateHeure(d) {
+  if (!d) return "—";
+  const date = (d instanceof Date) ? d : new Date(d);
+  if (isNaN(date)) return "—";
+  return date.toLocaleDateString('fr-FR') + " à " + date.toLocaleTimeString('fr-FR', { hour:'2-digit', minute:'2-digit' });
+}
+function dateISOAujourdhui() {
+  const d = new Date();
+  return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,'0') + "-" + String(d.getDate()).padStart(2,'0');
+}
+function genererId() { return Date.now().toString(36) + Math.random().toString(36).slice(2,8); }
+function echapperHTML(s) {
+  if (s === undefined || s === null) return "";
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function afficherToast(message, type = "info") {
+  const zone = document.getElementById('zone-toasts');
+  const el = document.createElement('div');
+  el.className = 'toast ' + type;
+  const icones = { succes:'✅', erreur:'⛔', alerte:'⚠️', info:'ℹ️' };
+  el.innerHTML = `<span>${icones[type]||icones.info}</span><span>${echapperHTML(message)}</span>`;
+  zone.appendChild(el);
+  setTimeout(() => { el.style.opacity = '0'; el.style.transform='translateX(30px)'; setTimeout(()=>el.remove(), 300); }, 4200);
+}
+
+function ouvrirModale(id) { document.getElementById(id).classList.add('actif'); }
+window.fermerModale = function(id) { document.getElementById(id).classList.remove('actif'); };
+
+function demanderConfirmation(texte, callback) {
+  document.getElementById('texte-confirmation').textContent = texte;
+  ouvrirModale('modale-confirmation');
+  const btn = document.getElementById('btn-confirmer-action');
+  const nouveauBtn = btn.cloneNode(true);
+  btn.parentNode.replaceChild(nouveauBtn, btn);
+  nouveauBtn.addEventListener('click', () => { fermerModale('modale-confirmation'); callback(); });
+}
+
+// Journalisation des actions importantes (traçabilité / sécurité)
+async function journaliser(action, details = "") {
+  try {
+    await addDoc(collection(db, "logs"), {
+      action, details,
+      utilisateur: ETAT.utilisateur ? ETAT.utilisateur.email : "inconnu",
+      role: ETAT.utilisateur ? ETAT.utilisateur.role : "inconnu",
+      date: serverTimestamp(),
+      dateLocale: new Date().toISOString()
+    });
+  } catch (e) { console.warn("Journalisation impossible :", e.message); }
+}
+
+// ---------------------------------------------------------------------
+// 4. AUTHENTIFICATION & RÔLES
+// ---------------------------------------------------------------------
+window.connexionUtilisateur = async function () {
+  const email = document.getElementById('connexion-email').value.trim();
+  const mdp = document.getElementById('connexion-mdp').value;
+  const boiteErreur = document.getElementById('connexion-erreur');
+  const btn = document.getElementById('btn-connexion');
+  boiteErreur.style.display = 'none';
+  if (!email || !mdp) { boiteErreur.textContent = "Veuillez renseigner l'e-mail et le mot de passe."; boiteErreur.style.display='block'; return; }
+  btn.disabled = true; btn.textContent = "Connexion en cours...";
+  try {
+    await signInWithEmailAndPassword(auth, email, mdp);
+    // onAuthStateChanged prend le relais pour charger le profil et l'app
+  } catch (e) {
+    let msg = "Adresse e-mail ou mot de passe incorrect.";
+    if (e.code === 'auth/too-many-requests') msg = "Trop de tentatives. Réessayez plus tard.";
+    if (e.code === 'auth/user-disabled') msg = "Ce compte a été désactivé.";
+    boiteErreur.textContent = msg; boiteErreur.style.display = 'block';
+    btn.disabled = false; btn.textContent = "Se connecter";
+  }
+};
+
+window.deconnexionUtilisateur = async function () {
+  await journaliser("Déconnexion");
+  detacherEcouteursTempsReel();
+  await signOut(auth);
+};
+
+onAuthStateChanged(auth, async (user) => {
+  const chargement = document.getElementById('ecran-chargement');
+  if (!user) {
+    ETAT.utilisateur = null;
+    document.getElementById('app').style.display = 'none';
+    document.getElementById('ecran-connexion').style.display = 'flex';
+    document.getElementById('btn-connexion').disabled = false;
+    document.getElementById('btn-connexion').textContent = "Se connecter";
+    chargement.classList.add('masque');
+    return;
+  }
+  try {
+    let profilSnap = await getDoc(doc(db, "users", user.uid));
+    if (!profilSnap.exists()) {
+      // Premier accès de l'administrateur principal : on crée automatiquement son profil "admin"
+      if (user.email === EMAIL_ADMIN_PRINCIPAL) {
+        await setDoc(doc(db, "users", user.uid), {
+          nom: "Administrateur Principal", email: user.email, role: "admin", creeLe: serverTimestamp()
+        });
+        profilSnap = await getDoc(doc(db, "users", user.uid));
+      } else {
+        afficherToast("Aucun profil trouvé pour ce compte. Contactez l'administrateur.", "erreur");
+        await signOut(auth);
+        return;
+      }
+    }
+    const profil = profilSnap.data();
+    ETAT.utilisateur = { uid: user.uid, email: user.email, nom: profil.nom || user.email, role: profil.role || "vendeur" };
+    document.getElementById('ecran-connexion').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    document.getElementById('profil-nom').textContent = ETAT.utilisateur.nom;
+    const chipRole = { admin:"Administrateur", gestionnaire:"Gestionnaire", vendeur:"Vendeur" };
+    document.getElementById('profil-role').textContent = chipRole[ETAT.utilisateur.role] || ETAT.utilisateur.role;
+    construireMenu();
+    attacherEcouteursTempsReel();
+    afficherVue('dashboard');
+    journaliser("Connexion");
+  } catch (e) {
+    console.error(e);
+    afficherToast("Erreur lors du chargement du profil : " + e.message, "erreur");
+  } finally {
+    setTimeout(() => chargement.classList.add('masque'), 400);
+  }
+});
+
+// ---------------------------------------------------------------------
+// 5. MENU DYNAMIQUE SELON LE RÔLE
+// ---------------------------------------------------------------------
+const DEFINITION_MENU = [
+  { id:'dashboard', label:'Tableau de bord', icone:'📊', roles:['admin','gestionnaire','vendeur'] },
+  { id:'ventes', label:'Caisse / Ventes', icone:'🧾', roles:['admin','gestionnaire','vendeur'] },
+  { id:'personnel', label:'Personnel', icone:'👥', roles:['admin','gestionnaire'] },
+  { id:'pointage', label:'Pointage', icone:'⏱️', roles:['admin','gestionnaire'] },
+  { id:'stock', label:'Stock (Plats)', icone:'📦', roles:['admin','gestionnaire'] },
+  { id:'boissons', label:'Boissons', icone:'🥤', roles:['admin','gestionnaire'] },
+  { id:'rapports', label:'Rapports', icone:'📑', roles:['admin','gestionnaire'] },
+  { id:'utilisateurs', label:'Utilisateurs', icone:'🔐', roles:['admin'] },
+  { id:'parametres', label:'Paramètres', icone:'⚙️', roles:['admin'] }
+];
+function construireMenu() {
+  const nav = document.getElementById('nav-menu');
+  nav.innerHTML = "";
+  DEFINITION_MENU.forEach(item => {
+    if (!item.roles.includes(ETAT.utilisateur.role)) return;
+    const btn = document.createElement('button');
+    btn.className = 'nav-item' + (item.id === ETAT.vueActive ? ' actif' : '');
+    btn.innerHTML = `<span class="ic">${item.icone}</span><span>${item.label}</span>`;
+    btn.onclick = () => afficherVue(item.id);
+    nav.appendChild(btn);
+  });
+}
+window.afficherVue = function (id) {
+  ETAT.vueActive = id;
+  document.querySelectorAll('.vue').forEach(v => v.classList.remove('actif'));
+  const cible = document.getElementById('vue-' + id);
+  if (cible) cible.classList.add('actif');
+  document.querySelectorAll('.nav-item').forEach((el,i) => el.classList.toggle('actif', DEFINITION_MENU.filter(m=>m.roles.includes(ETAT.utilisateur.role))[i] && DEFINITION_MENU.filter(m=>m.roles.includes(ETAT.utilisateur.role))[i].id === id));
+  const titres = { dashboard:'Tableau de bord', ventes:'Caisse / Ventes', personnel:'Gestion du personnel', pointage:'Pointage', stock:'Gestion du stock', boissons:'Gestion des boissons', rapports:'Rapports', utilisateurs:'Utilisateurs', parametres:'Paramètres' };
+  document.getElementById('topbar-titre').textContent = titres[id] || '';
+  document.getElementById('sidebar').classList.remove('ouvert');
+  if (id === 'dashboard') rafraichirDashboard();
+  if (id === 'ventes') { rafraichirGrilleCaisse(); rafraichirTableVentes(); }
+  if (id === 'personnel') rafraichirTablePersonnel();
+  if (id === 'pointage') { remplirSelectPointageEmployes(); rafraichirPointage(); }
+  if (id === 'stock') rafraichirTableStock();
+  if (id === 'boissons') rafraichirTableBoissons();
+  if (id === 'utilisateurs') rafraichirTableUtilisateurs();
+  if (id === 'parametres') chargerFormulaireParametres();
+};
+window.basculerSidebar = function () { document.getElementById('sidebar').classList.toggle('ouvert'); };
+
+// Vérifie un droit et affiche un message si refusé
+function verifierDroit(rolesAutorises, messageRefus = "Vous n'avez pas les droits nécessaires pour cette action.") {
+  if (!ETAT.utilisateur || !rolesAutorises.includes(ETAT.utilisateur.role)) {
+    afficherToast(messageRefus, "erreur");
+    return false;
+  }
+  return true;
+}
+
+// ---------------------------------------------------------------------
+// 6. ÉCOUTEURS TEMPS RÉEL FIRESTORE
+// ---------------------------------------------------------------------
+function attacherEcouteursTempsReel() {
+  detacherEcouteursTempsReel();
+
+  ETAT.desabonnements.push(onSnapshot(collection(db, "employees"), snap => {
+    ETAT.employes = snap.docs.map(d => ({ id:d.id, ...d.data() }));
+    if (ETAT.vueActive === 'personnel') rafraichirTablePersonnel();
+    if (ETAT.vueActive === 'pointage') { remplirSelectPointageEmployes(); rafraichirPointage(); }
+    if (ETAT.vueActive === 'dashboard') rafraichirDashboard();
+  }, err => console.warn(err)));
+
+  ETAT.desabonnements.push(onSnapshot(collection(db, "products"), snap => {
+    ETAT.produits = snap.docs.map(d => ({ id:d.id, ...d.data() }));
+    if (ETAT.vueActive === 'stock') rafraichirTableStock();
+    if (ETAT.vueActive === 'ventes') rafraichirGrilleCaisse();
+    if (ETAT.vueActive === 'dashboard') rafraichirDashboard();
+    remplirCategoriesDatalist();
+  }, err => console.warn(err)));
+
+  ETAT.desabonnements.push(onSnapshot(collection(db, "drinks"), snap => {
+    ETAT.boissons = snap.docs.map(d => ({ id:d.id, ...d.data() }));
+    if (ETAT.vueActive === 'boissons') rafraichirTableBoissons();
+    if (ETAT.vueActive === 'ventes') rafraichirGrilleCaisse();
+    if (ETAT.vueActive === 'dashboard') rafraichirDashboard();
+  }, err => console.warn(err)));
+
+  ETAT.desabonnements.push(onSnapshot(query(collection(db, "sales"), orderBy("dateLocale","desc")), snap => {
+    ETAT.ventes = snap.docs.map(d => ({ id:d.id, ...d.data() }));
+    if (ETAT.vueActive === 'ventes') rafraichirTableVentes();
+    if (ETAT.vueActive === 'dashboard') rafraichirDashboard();
+  }, err => console.warn(err)));
+
+  ETAT.desabonnements.push(onSnapshot(collection(db, "attendance"), snap => {
+    ETAT.pointagesTous = snap.docs.map(d => ({ id:d.id, ...d.data() }));
+    ETAT.pointagesJour = ETAT.pointagesTous.filter(p => p.date === dateISOAujourdhui());
+    if (ETAT.vueActive === 'pointage') rafraichirPointage();
+    if (ETAT.vueActive === 'dashboard') rafraichirDashboard();
+  }, err => console.warn(err)));
+
+  if (ETAT.utilisateur.role === 'admin') {
+    ETAT.desabonnements.push(onSnapshot(collection(db, "users"), snap => {
+      ETAT.utilisateurs = snap.docs.map(d => ({ id:d.id, ...d.data() }));
+      if (ETAT.vueActive === 'utilisateurs') rafraichirTableUtilisateurs();
+    }, err => console.warn(err)));
+  }
+
+  ETAT.desabonnements.push(onSnapshot(doc(db, "settings", "config"), snap => {
+    if (snap.exists()) {
+      ETAT.parametres = snap.data();
+      verifierAlerteFermeture();
+    }
+  }, err => console.warn(err)));
+}
+function detacherEcouteursTempsReel() {
+  ETAT.desabonnements.forEach(fn => { try { fn(); } catch(e){} });
+  ETAT.desabonnements = [];
+}
+
+// ---------------------------------------------------------------------
+// 7. TABLEAU DE BORD
+// ---------------------------------------------------------------------
+function rafraichirDashboard() {
+  const aujourdHui = dateISOAujourdhui();
+  const maintenant = new Date();
+  const debutMois = new Date(maintenant.getFullYear(), maintenant.getMonth(), 1);
+  const debutAnnee = new Date(maintenant.getFullYear(), 0, 1);
+
+  const ventesJour = ETAT.ventes.filter(v => v.dateLocale && v.dateLocale.startsWith(aujourdHui));
+  const ventesMois = ETAT.ventes.filter(v => v.dateLocale && new Date(v.dateLocale) >= debutMois);
+  const ventesAnnee = ETAT.ventes.filter(v => v.dateLocale && new Date(v.dateLocale) >= debutAnnee);
+
+  const caJour = ventesJour.reduce((s,v) => s + (v.total||0), 0);
+  const caMois = ventesMois.reduce((s,v) => s + (v.total||0), 0);
+  const caAnnee = ventesAnnee.reduce((s,v) => s + (v.total||0), 0);
+  const beneficesJour = calculerBenefices(ventesJour);
+
+  const stockTotal = [...ETAT.produits, ...ETAT.boissons];
+  const valeurStock = stockTotal.reduce((s,p) => s + (Number(p.prixAchat||0) * Number(p.quantite||0)), 0);
+  const enRupture = stockTotal.filter(p => statutStock(p).niveau === 'rouge').length;
+
+  const presents = ETAT.pointagesJour.filter(p => p.heureArrivee).length;
+  const enRetard = ETAT.pointagesJour.filter(p => p.statut === 'retard').length;
+  const absents = Math.max(0, ETAT.employes.length - presents);
+
+  const clientsUniques = new Set(ventesJour.map(v => v.client || v.numero)).size;
+
+  const stats = [
+    { label:"Chiffre d'affaires du jour", valeur: formaterFCFA(caJour), icone:'💰', classe:'c-bordeaux' },
+    { label:"Ventes du mois", valeur: formaterFCFA(caMois), icone:'📈', classe:'c-or' },
+    { label:"Ventes de l'année", valeur: formaterFCFA(caAnnee), icone:'📅', classe:'c-anthracite' },
+    { label:"Bénéfices du jour", valeur: formaterFCFA(beneficesJour), icone:'💎', classe:'c-emeraude' },
+    { label:"Nombre de ventes (jour)", valeur: ventesJour.length, icone:'🧾', classe:'c-ambre' },
+    { label:"Clients servis (jour)", valeur: clientsUniques, icone:'🙋', classe:'c-bordeaux' },
+    { label:"Personnel présent", valeur: presents, icone:'🟢', classe:'c-emeraude' },
+    { label:"Personnel absent", valeur: absents, icone:'🔴', classe:'c-rubis' },
+    { label:"Retards du jour", valeur: enRetard, icone:'🟠', classe:'c-ambre' },
+    { label:"Produits en rupture", valeur: enRupture, icone:'⚠️', classe:'c-rubis' },
+    { label:"Valeur totale du stock", valeur: formaterFCFA(valeurStock), icone:'📦', classe:'c-or' },
+  ];
+  document.getElementById('dash-stats').innerHTML = stats.map(s => `
+    <div class="stat-carte ${s.classe}">
+      <div class="stat-icone">${s.icone}</div>
+      <div class="stat-valeur">${s.valeur}</div>
+      <div class="stat-label">${s.label}</div>
+    </div>`).join('');
+
+  // Alertes stock -> badge cloche
+  document.getElementById('btn-notifs').classList.toggle('a-alertes', enRupture > 0);
+
+  // Tableau des alertes stock
+  const alertes = stockTotal.filter(p => statutStock(p).niveau !== 'vert').sort((a,b)=> statutStock(a).pourcentage - statutStock(b).pourcentage);
+  const corpsAlertes = document.querySelector('#tbl-alertes-stock tbody');
+  corpsAlertes.innerHTML = alertes.length ? alertes.slice(0,8).map(p => {
+    const st = statutStock(p);
+    return `<tr><td>${echapperHTML(p.nom)}</td><td>${echapperHTML(p.categorie||'—')}</td><td>${p.quantite ?? 0}</td><td><span class="badge badge-${st.couleurBadge}">${st.texte}</span></td></tr>`;
+  }).join('') : `<tr><td colspan="4" class="vide-etat">Aucune alerte — le stock est sain 👍</td></tr>`;
+
+  dessinerGraphiques();
+}
+
+function calculerBenefices(listeVentes) {
+  let total = 0;
+  listeVentes.forEach(v => {
+    (v.lignes||[]).forEach(l => {
+      const achat = Number(l.prixAchat||0);
+      total += (Number(l.prix||0) - achat) * Number(l.qte||0);
+    });
+  });
+  return total;
+}
+
+function statutStock(p) {
+  const qte = Number(p.quantite || 0);
+  const max = Number(p.quantiteMax || 0) || Math.max(qte, 1);
+  const pourcentage = max > 0 ? Math.min(100, Math.round((qte / max) * 100)) : 0;
+  if (pourcentage >= 75) return { niveau:'vert', texte:'Stock normal', couleurBadge:'vert', couleurBarre:'#0F7A5A', pourcentage };
+  if (pourcentage >= 40) return { niveau:'orange', texte:'À surveiller', couleurBadge:'orange', couleurBarre:'#E08A1E', pourcentage };
+  return { niveau:'rouge', texte: qte<=0 ? 'Rupture' : 'Stock critique', couleurBadge:'rouge', couleurBarre:'#9E1B32', pourcentage };
+}
+
+function dessinerGraphiques() {
+  if (typeof Chart === 'undefined') return;
+  // --- Graphique : ventes des 7 derniers jours ---
+  const jours = [];
+  const valeurs = [];
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date(); d.setDate(d.getDate() - i);
+    const iso = d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,'0') + "-" + String(d.getDate()).padStart(2,'0');
+    jours.push(d.toLocaleDateString('fr-FR', { weekday:'short' }));
+    const total = ETAT.ventes.filter(v => v.dateLocale && v.dateLocale.startsWith(iso)).reduce((s,v)=>s+(v.total||0),0);
+    valeurs.push(total);
+  }
+  const ctx1 = document.getElementById('chart-ventes-semaine');
+  if (ctx1) {
+    if (ETAT.chartVentes) ETAT.chartVentes.destroy();
+    ETAT.chartVentes = new Chart(ctx1, {
+      type:'bar',
+      data:{ labels: jours, datasets:[{ label:"CA (FCFA)", data: valeurs, backgroundColor:'#C9A227', borderRadius:6 }] },
+      options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{ display:false } }, scales:{ y:{ beginAtZero:true } } }
+    });
+  }
+  // --- Graphique : répartition personnel présent / retard / absent ---
+  const presents = ETAT.pointagesJour.filter(p=>p.statut==='a_l_heure').length;
+  const retards = ETAT.pointagesJour.filter(p=>p.statut==='retard').length;
+  const absents = Math.max(0, ETAT.employes.length - ETAT.pointagesJour.length);
+  const ctx2 = document.getElementById('chart-personnel');
+  if (ctx2) {
+    if (ETAT.chartPersonnel) ETAT.chartPersonnel.destroy();
+    ETAT.chartPersonnel = new Chart(ctx2, {
+      type:'doughnut',
+      data:{ labels:['À l\'heure','En retard','Absents'], datasets:[{ data:[presents,retards,absents], backgroundColor:['#0F7A5A','#E08A1E','#9E1B32'] }] },
+      options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{ position:'bottom', labels:{ boxWidth:10, font:{size:11} } } } }
+    });
+  }
+}
+
+window.ouvrirNotifications = function () {
+  const stockTotal = [...ETAT.produits, ...ETAT.boissons];
+  const alertes = stockTotal.filter(p => statutStock(p).niveau !== 'vert');
+  const corps = document.getElementById('corps-notifs');
+  corps.innerHTML = alertes.length ? alertes.map(p => {
+    const st = statutStock(p);
+    return `<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--gris-bord);">
+      <div><b>${echapperHTML(p.nom)}</b><div style="font-size:11.5px;color:var(--gris-txt);">${echapperHTML(p.categorie||'')}</div></div>
+      <span class="badge badge-${st.couleurBadge}">${st.texte} (${p.quantite ?? 0})</span>
+    </div>`;
+  }).join('') : `<div class="vide-etat">Aucune alerte pour le moment.</div>`;
+  ouvrirModale('modale-notifs');
+};
+
+// ---------------------------------------------------------------------
+// 8. GESTION DU PERSONNEL
+// ---------------------------------------------------------------------
+window.ouvrirModaleEmploye = function (id = null) {
+  if (!verifierDroit(['admin','gestionnaire'])) return;
+  document.getElementById('employe-id').value = id || "";
+  document.getElementById('titre-modale-employe').textContent = id ? "Modifier l'employé" : "Nouvel employé";
+  const champs = ['nom','fonction','tel','date-embauche','salaire','photo','heure-arrivee','heure-depart','observations'];
+  if (id) {
+    const emp = ETAT.employes.find(e => e.id === id);
+    if (!emp) return;
+    document.getElementById('employe-nom').value = emp.nom || "";
+    document.getElementById('employe-fonction').value = emp.fonction || "";
+    document.getElementById('employe-tel').value = emp.telephone || "";
+    document.getElementById('employe-date-embauche').value = emp.dateEmbauche || "";
+    document.getElementById('employe-salaire').value = emp.salaire || "";
+    document.getElementById('employe-photo').value = emp.photo || "";
+    document.getElementById('employe-heure-arrivee').value = emp.heureArrivee || "08:00";
+    document.getElementById('employe-heure-depart').value = emp.heureDepart || "18:00";
+    document.getElementById('employe-observations').value = emp.observations || "";
+  } else {
+    champs.forEach(c => { const el = document.getElementById('employe-'+c); if (el) el.value = ""; });
+    document.getElementById('employe-heure-arrivee').value = "08:00";
+    document.getElementById('employe-heure-depart').value = "18:00";
+  }
+  ouvrirModale('modale-employe');
+};
+
+window.enregistrerEmploye = async function () {
+  if (!verifierDroit(['admin','gestionnaire'])) return;
+  const id = document.getElementById('employe-id').value;
+  const nom = document.getElementById('employe-nom').value.trim();
+  const fonction = document.getElementById('employe-fonction').value.trim();
+  if (!nom || !fonction) { afficherToast("Le nom et la fonction sont obligatoires.", "alerte"); return; }
+  const data = {
+    nom, fonction,
+    telephone: document.getElementById('employe-tel').value.trim(),
+    dateEmbauche: document.getElementById('employe-date-embauche').value,
+    salaire: Number(document.getElementById('employe-salaire').value) || 0,
+    photo: document.getElementById('employe-photo').value.trim(),
+    heureArrivee: document.getElementById('employe-heure-arrivee').value || "08:00",
+    heureDepart: document.getElementById('employe-heure-depart').value || "18:00",
+    observations: document.getElementById('employe-observations').value.trim()
+  };
+  try {
+    if (id) { await updateDoc(doc(db,"employees",id), data); journaliser("Modification employé", nom); }
+    else { data.creeLe = serverTimestamp(); await addDoc(collection(db,"employees"), data); journaliser("Création employé", nom); }
+    afficherToast("Employé enregistré avec succès.", "succes");
+    fermerModale('modale-employe');
+  } catch (e) { afficherToast("Erreur : " + e.message, "erreur"); }
+};
+
+window.supprimerEmploye = function (id) {
+  if (!verifierDroit(['admin'], "Seul l'administrateur peut supprimer un employé.")) return;
+  const emp = ETAT.employes.find(e=>e.id===id);
+  demanderConfirmation(`Supprimer définitivement l'employé "${emp?.nom||''}" ?`, async () => {
+    try { await deleteDoc(doc(db,"employees",id)); journaliser("Suppression employé", emp?.nom); afficherToast("Employé supprimé.", "succes"); }
+    catch(e){ afficherToast("Erreur : "+e.message, "erreur"); }
+  });
+};
+
+function rafraichirTablePersonnel() {
+  const recherche = (document.getElementById('recherche-personnel')?.value || "").toLowerCase();
+  const liste = ETAT.employes.filter(e => (e.nom||'').toLowerCase().includes(recherche) || (e.fonction||'').toLowerCase().includes(recherche));
+  const peutModifier = ['admin','gestionnaire'].includes(ETAT.utilisateur.role);
+  const peutSupprimer = ETAT.utilisateur.role === 'admin';
+  document.getElementById('btn-nouvel-employe').style.display = peutModifier ? '' : 'none';
+  const corps = document.querySelector('#tbl-personnel tbody');
+  corps.innerHTML = liste.length ? liste.map(e => `
+    <tr>
+      <td>${e.photo ? `<img class="cell-photo" src="${echapperHTML(e.photo)}">` : `<div class="cell-photo" style="display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--bordeaux);">${echapperHTML((e.nom||'?')[0])}</div>`}</td>
+      <td><a style="font-weight:700;color:var(--bordeaux);cursor:pointer;" onclick="ouvrirFicheEmploye('${e.id}')">${echapperHTML(e.nom)}</a></td>
+      <td>${echapperHTML(e.fonction)}</td>
+      <td>${echapperHTML(e.telephone||'—')}</td>
+      <td>${formaterFCFA(e.salaire)}</td>
+      <td>${e.dateEmbauche ? formaterDate(e.dateEmbauche) : '—'}</td>
+      <td>
+        ${peutModifier ? `<button class="btn btn-sm btn-fantome" onclick="ouvrirModaleEmploye('${e.id}')">✏️</button>` : ''}
+        ${peutSupprimer ? `<button class="btn btn-sm btn-rubis" onclick="supprimerEmploye('${e.id}')">🗑️</button>` : ''}
+      </td>
+    </tr>`).join('') : `<tr><td colspan="7" class="vide-etat">Aucun employé enregistré.</td></tr>`;
+}
+
+window.ouvrirFicheEmploye = function (id) {
+  const emp = ETAT.employes.find(e=>e.id===id);
+  if (!emp) return;
+  const historique = (ETAT.pointagesTous||[]).filter(p=>p.employeeId===id).sort((a,b)=> (b.date||'').localeCompare(a.date||'')).slice(0,15);
+  document.getElementById('corps-fiche-employe').innerHTML = `
+    <div style="display:flex;gap:16px;align-items:center;margin-bottom:18px;">
+      ${emp.photo ? `<img src="${echapperHTML(emp.photo)}" style="width:70px;height:70px;border-radius:14px;object-fit:cover;">` : `<div style="width:70px;height:70px;border-radius:14px;background:var(--creme-2);display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:800;color:var(--bordeaux);">${echapperHTML((emp.nom||'?')[0])}</div>`}
+      <div>
+        <div style="font-family:var(--police-titre);font-weight:700;font-size:18px;color:var(--bordeaux);">${echapperHTML(emp.nom)}</div>
+        <div style="color:var(--gris-txt);font-size:13px;">${echapperHTML(emp.fonction)} · ${echapperHTML(emp.telephone||'—')}</div>
+      </div>
+    </div>
+    <div class="grille-3" style="margin-bottom:16px;">
+      <div class="carte" style="padding:12px;"><div style="font-size:11px;color:var(--gris-txt);">Salaire</div><b>${formaterFCFA(emp.salaire)}</b></div>
+      <div class="carte" style="padding:12px;"><div style="font-size:11px;color:var(--gris-txt);">Embauché le</div><b>${emp.dateEmbauche?formaterDate(emp.dateEmbauche):'—'}</b></div>
+      <div class="carte" style="padding:12px;"><div style="font-size:11px;color:var(--gris-txt);">Horaires normaux</div><b>${emp.heureArrivee||'—'} - ${emp.heureDepart||'—'}</b></div>
+    </div>
+    ${emp.observations ? `<div class="carte" style="padding:12px;margin-bottom:16px;"><div style="font-size:11px;color:var(--gris-txt);">Observations</div>${echapperHTML(emp.observations)}</div>` : ''}
+    <div class="carte-titre" style="font-size:14px;">Historique de pointage</div>
+    <div class="zone-tableau"><table class="tbl"><thead><tr><th>Date</th><th>Arrivée</th><th>Départ</th><th>Statut</th></tr></thead><tbody>
+      ${historique.length ? historique.map(h => `<tr><td>${formaterDate(h.date)}</td><td>${h.heureArrivee||'—'}</td><td>${h.heureDepart||'—'}</td><td>${badgeStatutPointage(h.statut)}</td></tr>`).join('') : '<tr><td colspan="4" class="vide-etat">Aucun historique.</td></tr>'}
+    </tbody></table></div>
+  `;
+  ouvrirModale('modale-fiche-employe');
+};
+
+// ---------------------------------------------------------------------
+// 9. POINTAGE & FERMETURE
+// ---------------------------------------------------------------------
+function badgeStatutPointage(statut) {
+  const map = { a_l_heure:['vert','🟢 À l\'heure'], retard:['orange','🟠 En retard'], absent:['rouge','🔴 Absent'] };
+  const [c,t] = map[statut] || ['gris','—'];
+  return `<span class="badge badge-${c}">${t}</span>`;
+}
+function remplirSelectPointageEmployes() {
+  const sel = document.getElementById('pointage-select-employe');
+  sel.innerHTML = ETAT.employes.map(e => `<option value="${e.id}">${echapperHTML(e.nom)} — ${echapperHTML(e.fonction)}</option>`).join('') || '<option value="">Aucun employé</option>';
+}
+function minutesDepuisMinuit(heureStr) {
+  if (!heureStr) return null;
+  const [h,m] = heureStr.split(':').map(Number);
+  return h*60+m;
+}
+window.pointerArrivee = async function () {
+  if (!verifierDroit(['admin','gestionnaire'])) return;
+  const empId = document.getElementById('pointage-select-employe').value;
+  const emp = ETAT.employes.find(e=>e.id===empId);
+  if (!emp) { afficherToast("Sélectionnez un employé.", "alerte"); return; }
+  const aujourdHui = dateISOAujourdhui();
+  const existant = (ETAT.pointagesTous||[]).find(p => p.employeeId===empId && p.date===aujourdHui);
+  const maintenant = new Date();
+  const heureActuelle = String(maintenant.getHours()).padStart(2,'0')+':'+String(maintenant.getMinutes()).padStart(2,'0');
+  const minActuel = minutesDepuisMinuit(heureActuelle);
+  const minPrevu = minutesDepuisMinuit(emp.heureArrivee || "08:00");
+  const retardMinutes = Math.max(0, minActuel - minPrevu);
+  const statut = retardMinutes > 5 ? 'retard' : 'a_l_heure';
+  const data = { employeeId: empId, employeeNom: emp.nom, date: aujourdHui, heureArrivee: heureActuelle, statut, retardMinutes };
+  try {
+    if (existant) await updateDoc(doc(db,"attendance",existant.id), data);
+    else await addDoc(collection(db,"attendance"), data);
+    journaliser("Pointage arrivée", emp.nom + " à " + heureActuelle);
+    afficherToast(`Arrivée de ${emp.nom} enregistrée (${statut==='retard'?'en retard de '+retardMinutes+' min':'à l\'heure'}).`, statut==='retard'?'alerte':'succes');
+  } catch(e){ afficherToast("Erreur : "+e.message, "erreur"); }
+};
+window.pointerDepart = async function () {
+  if (!verifierDroit(['admin','gestionnaire'])) return;
+  const empId = document.getElementById('pointage-select-employe').value;
+  const emp = ETAT.employes.find(e=>e.id===empId);
+  if (!emp) { afficherToast("Sélectionnez un employé.", "alerte"); return; }
+  const aujourdHui = dateISOAujourdhui();
+  const existant = (ETAT.pointagesTous||[]).find(p => p.employeeId===empId && p.date===aujourdHui);
+  if (!existant || !existant.heureArrivee) { afficherToast("Cet employé n'a pas encore pointé son arrivée aujourd'hui.", "alerte"); return; }
+  const maintenant = new Date();
+  const heureActuelle = String(maintenant.getHours()).padStart(2,'0')+':'+String(maintenant.getMinutes()).padStart(2,'0');
+  const tempsTravailleMinutes = Math.max(0, minutesDepuisMinuit(heureActuelle) - minutesDepuisMinuit(existant.heureArrivee));
+  try {
+    await updateDoc(doc(db,"attendance",existant.id), { heureDepart: heureActuelle, tempsTravailleMinutes });
+    journaliser("Pointage départ", emp.nom + " à " + heureActuelle);
+    afficherToast(`Départ de ${emp.nom} enregistré.`, "succes");
+  } catch(e){ afficherToast("Erreur : "+e.message, "erreur"); }
+};
+
+function rafraichirPointage() {
+  const presents = ETAT.pointagesJour.filter(p=>p.heureArrivee).length;
+  const retards = ETAT.pointagesJour.filter(p=>p.statut==='retard').length;
+  const absents = Math.max(0, ETAT.employes.length - ETAT.pointagesJour.length);
+  const stats = [
+    { label:'Présents aujourd\'hui', valeur: presents, icone:'🟢', classe:'c-emeraude' },
+    { label:'En retard', valeur: retards, icone:'🟠', classe:'c-ambre' },
+    { label:'Absents', valeur: absents, icone:'🔴', classe:'c-rubis' },
+    { label:'Total employés', valeur: ETAT.employes.length, icone:'👥', classe:'c-bordeaux' },
+  ];
+  document.getElementById('pointage-stats').innerHTML = stats.map(s => `
+    <div class="stat-carte ${s.classe}"><div class="stat-icone">${s.icone}</div><div class="stat-valeur">${s.valeur}</div><div class="stat-label">${s.label}</div></div>`).join('');
+
+  const corps = document.querySelector('#tbl-pointages tbody');
+  corps.innerHTML = ETAT.pointagesJour.length ? ETAT.pointagesJour.map(p => {
+    const travail = p.tempsTravailleMinutes ? `${Math.floor(p.tempsTravailleMinutes/60)}h${String(p.tempsTravailleMinutes%60).padStart(2,'0')}` : '—';
+    return `<tr><td>${echapperHTML(p.employeeNom)}</td><td>${p.heureArrivee||'—'}</td><td>${p.heureDepart||'—'}</td><td>${p.retardMinutes?p.retardMinutes+' min':'—'}</td><td>${travail}</td><td>${badgeStatutPointage(p.statut)}</td></tr>`;
+  }).join('') : `<tr><td colspan="6" class="vide-etat">Aucun pointage aujourd'hui.</td></tr>`;
+
+  if (ETAT.parametres.heureFermetureNormale) document.getElementById('heure-fermeture-normale').value = ETAT.parametres.heureFermetureNormale;
+}
+
+window.enregistrerHeureFermetureNormale = async function () {
+  if (!verifierDroit(['admin'])) return;
+  const heure = document.getElementById('heure-fermeture-normale').value;
+  if (!heure) { afficherToast("Choisissez une heure.", "alerte"); return; }
+  await setDoc(doc(db,"settings","config"), { heureFermetureNormale: heure }, { merge:true });
+  afficherToast("Heure normale de fermeture enregistrée.", "succes");
+};
+
+window.enregistrerFermetureReelle = async function () {
+  if (!verifierDroit(['admin','gestionnaire'])) return;
+  const maintenant = new Date();
+  const heureActuelle = String(maintenant.getHours()).padStart(2,'0')+':'+String(maintenant.getMinutes()).padStart(2,'0');
+  const aujourdHui = dateISOAujourdhui();
+  const heureNormale = ETAT.parametres.heureFermetureNormale;
+  const fermetureAnticipee = heureNormale ? (minutesDepuisMinuit(heureActuelle) < minutesDepuisMinuit(heureNormale)) : false;
+  const cle = `fermetures.${aujourdHui}`;
+  try {
+    await setDoc(doc(db,"settings","config"), { fermetures: { [aujourdHui]: { heureReelle: heureActuelle, anticipee: fermetureAnticipee } } }, { merge:true });
+    journaliser("Fermeture du restaurant", `Fermé à ${heureActuelle}${fermetureAnticipee?' (ANTICIPÉE)':''}`);
+    if (fermetureAnticipee) {
+      document.getElementById('txt-alerte-fermeture').textContent = `Le restaurant a fermé à ${heureActuelle} au lieu de ${heureNormale} prévu. Merci de vérifier la raison de cette fermeture anticipée.`;
+      document.getElementById('alerte-fermeture').classList.add('actif');
+    } else {
+      afficherToast("Fermeture enregistrée à " + heureActuelle + ".", "succes");
+    }
+  } catch(e){ afficherToast("Erreur : "+e.message, "erreur"); }
+};
+window.fermerAlerteFermeture = function () { document.getElementById('alerte-fermeture').classList.remove('actif'); };
+function verifierAlerteFermeture() { /* réservé à une utilisation future (rappel automatique) */ }
+
+// ---------------------------------------------------------------------
+// 10. GESTION DU STOCK (PRODUITS)
+// ---------------------------------------------------------------------
+function remplirCategoriesDatalist() {
+  const cats = [...new Set(ETAT.produits.map(p=>p.categorie).filter(Boolean))];
+  document.getElementById('liste-categories').innerHTML = cats.map(c=>`<option value="${echapperHTML(c)}">`).join('');
+  const filtre = document.getElementById('filtre-categorie-stock');
+  if (filtre) {
+    const valActuelle = filtre.value;
+    filtre.innerHTML = '<option value="">Toutes catégories</option>' + cats.map(c=>`<option value="${echapperHTML(c)}">${echapperHTML(c)}</option>`).join('');
+    filtre.value = valActuelle;
+  }
+}
+window.ouvrirModaleProduit = function (id = null) {
+  if (!verifierDroit(['admin','gestionnaire'])) return;
+  if (id && !verifierDroit(['admin'], "Seul l'administrateur peut modifier un produit existant.")) return;
+  document.getElementById('produit-id').value = id || "";
+  document.getElementById('titre-modale-produit').textContent = id ? "Modifier le produit" : "Nouveau produit";
+  const champs = ['nom','categorie','prix-achat','prix-vente','quantite','quantite-max','code','codebarre','date-entree','date-sortie','photo'];
+  if (id) {
+    const p = ETAT.produits.find(x=>x.id===id); if (!p) return;
+    document.getElementById('produit-nom').value = p.nom||"";
+    document.getElementById('produit-categorie').value = p.categorie||"";
+    document.getElementById('produit-prix-achat').value = p.prixAchat||"";
+    document.getElementById('produit-prix-vente').value = p.prixVente||"";
+    document.getElementById('produit-quantite').value = p.quantite ?? "";
+    document.getElementById('produit-quantite-max').value = p.quantiteMax||"";
+    document.getElementById('produit-code').value = p.codeProduit||"";
+    document.getElementById('produit-codebarre').value = p.codeBarre||"";
+    document.getElementById('produit-date-entree').value = p.dateEntree||"";
+    document.getElementById('produit-date-sortie').value = p.dateSortie||"";
+    document.getElementById('produit-photo').value = p.photo||"";
+  } else {
+    champs.forEach(c => { const el=document.getElementById('produit-'+c); if (el) el.value=""; });
+  }
+  // Le gestionnaire ne peut pas modifier la quantité d'un produit existant (stock initial), seulement en ajouter un nouveau
+  document.getElementById('produit-quantite').disabled = !!(id && ETAT.utilisateur.role === 'gestionnaire');
+  ouvrirModale('modale-produit');
+};
+window.enregistrerProduit = async function () {
+  const id = document.getElementById('produit-id').value;
+  if (!verifierDroit(id ? ['admin'] : ['admin','gestionnaire'])) return;
+  const nom = document.getElementById('produit-nom').value.trim();
+  const categorie = document.getElementById('produit-categorie').value.trim();
+  const prixVente = Number(document.getElementById('produit-prix-vente').value);
+  if (!nom || !categorie || !prixVente) { afficherToast("Nom, catégorie et prix de vente sont obligatoires.", "alerte"); return; }
+  const data = {
+    nom, categorie,
+    prixAchat: Number(document.getElementById('produit-prix-achat').value)||0,
+    prixVente,
+    quantite: Number(document.getElementById('produit-quantite').value)||0,
+    quantiteMax: Number(document.getElementById('produit-quantite-max').value)||Number(document.getElementById('produit-quantite').value)||0,
+    codeProduit: document.getElementById('produit-code').value.trim(),
+    codeBarre: document.getElementById('produit-codebarre').value.trim(),
+    dateEntree: document.getElementById('produit-date-entree').value,
+    dateSortie: document.getElementById('produit-date-sortie').value,
+    photo: document.getElementById('produit-photo').value.trim()
+  };
+  try {
+    if (id) { await updateDoc(doc(db,"products",id), data); journaliser("Modification produit", nom); }
+    else { await addDoc(collection(db,"products"), data); journaliser("Création produit", nom); }
+    afficherToast("Produit enregistré avec succès.", "succes");
+    fermerModale('modale-produit');
+  } catch(e){ afficherToast("Erreur : "+e.message, "erreur"); }
+};
+window.supprimerProduit = function (id) {
+  if (!verifierDroit(['admin'], "Seul l'administrateur peut supprimer un produit.")) return;
+  const p = ETAT.produits.find(x=>x.id===id);
+  demanderConfirmation(`Supprimer définitivement "${p?.nom||''}" ?`, async () => {
+    try { await deleteDoc(doc(db,"products",id)); journaliser("Suppression produit", p?.nom); afficherToast("Produit supprimé.", "succes"); }
+    catch(e){ afficherToast("Erreur : "+e.message, "erreur"); }
+  });
+};
+function rafraichirTableStock() {
+  const recherche = (document.getElementById('recherche-stock')?.value||"").toLowerCase();
+  const cat = document.getElementById('filtre-categorie-stock')?.value || "";
+  const liste = ETAT.produits.filter(p =>
+    ((p.nom||'').toLowerCase().includes(recherche) || (p.codeProduit||'').toLowerCase().includes(recherche) || (p.codeBarre||'').toLowerCase().includes(recherche))
+    && (!cat || p.categorie === cat)
+  );
+  const peutSupprimer = ETAT.utilisateur.role === 'admin';
+  const corps = document.querySelector('#tbl-stock tbody');
+  corps.innerHTML = liste.length ? liste.map(p => {
+    const st = statutStock(p);
+    return `<tr>
+      <td>${p.photo?`<img class="cell-photo" src="${echapperHTML(p.photo)}">`:`<div class="cell-photo"></div>`}</td>
+      <td><b>${echapperHTML(p.nom)}</b><div style="font-size:11px;color:var(--gris-txt);">${echapperHTML(p.codeProduit||'')}</div></td>
+      <td>${echapperHTML(p.categorie)}</td>
+      <td>${formaterFCFA(p.prixVente)}</td>
+      <td style="min-width:130px;">${p.quantite ?? 0}<div class="barre-stock"><div style="width:${st.pourcentage}%;background:${st.couleurBarre};"></div></div></td>
+      <td><span class="badge badge-${st.couleurBadge}">${st.texte}</span></td>
+      <td>
+        <button class="btn btn-sm btn-fantome" onclick="ouvrirModaleProduit('${p.id}')">✏️</button>
+        ${peutSupprimer?`<button class="btn btn-sm btn-rubis" onclick="supprimerProduit('${p.id}')">🗑️</button>`:''}
+      </td>
+    </tr>`;
+  }).join('') : `<tr><td colspan="7" class="vide-etat">Aucun produit trouvé.</td></tr>`;
+}
+
+// ---------------------------------------------------------------------
+// 11. GESTION DES BOISSONS
+// ---------------------------------------------------------------------
+window.ouvrirModaleBoisson = function (id = null) {
+  if (!verifierDroit(['admin','gestionnaire'])) return;
+  if (id && !verifierDroit(['admin'], "Seul l'administrateur peut modifier une boisson existante.")) return;
+  document.getElementById('boisson-id').value = id || "";
+  document.getElementById('titre-modale-boisson').textContent = id ? "Modifier la boisson" : "Nouvelle boisson";
+  const champs = ['nom','categorie','prix-achat','prix-vente','quantite','quantite-max','code','photo'];
+  if (id) {
+    const b = ETAT.boissons.find(x=>x.id===id); if (!b) return;
+    document.getElementById('boisson-nom').value = b.nom||"";
+    document.getElementById('boisson-categorie').value = b.categorie||"";
+    document.getElementById('boisson-prix-achat').value = b.prixAchat||"";
+    document.getElementById('boisson-prix-vente').value = b.prixVente||"";
+    document.getElementById('boisson-quantite').value = b.quantite ?? "";
+    document.getElementById('boisson-quantite-max').value = b.quantiteMax||"";
+    document.getElementById('boisson-code').value = b.codeProduit||"";
+    document.getElementById('boisson-photo').value = b.photo||"";
+  } else { champs.forEach(c=>{ const el=document.getElementById('boisson-'+c); if(el) el.value=""; }); }
+  document.getElementById('boisson-quantite').disabled = !!(id && ETAT.utilisateur.role === 'gestionnaire');
+  ouvrirModale('modale-boisson');
+};
+window.enregistrerBoisson = async function () {
+  const id = document.getElementById('boisson-id').value;
+  if (!verifierDroit(id ? ['admin'] : ['admin','gestionnaire'])) return;
+  const nom = document.getElementById('boisson-nom').value.trim();
+  const categorie = document.getElementById('boisson-categorie').value.trim();
+  const prixVente = Number(document.getElementById('boisson-prix-vente').value);
+  if (!nom || !categorie || !prixVente) { afficherToast("Nom, catégorie et prix de vente sont obligatoires.", "alerte"); return; }
+  const data = {
+    nom, categorie,
+    prixAchat: Number(document.getElementById('boisson-prix-achat').value)||0,
+    prixVente,
+    quantite: Number(document.getElementById('boisson-quantite').value)||0,
+    quantiteMax: Number(document.getElementById('boisson-quantite-max').value)||Number(document.getElementById('boisson-quantite').value)||0,
+    codeProduit: document.getElementById('boisson-code').value.trim(),
+    photo: document.getElementById('boisson-photo').value.trim()
+  };
+  try {
+    if (id) { await updateDoc(doc(db,"drinks",id), data); journaliser("Modification boisson", nom); }
+    else { await addDoc(collection(db,"drinks"), data); journaliser("Création boisson", nom); }
+    afficherToast("Boisson enregistrée avec succès.", "succes");
+    fermerModale('modale-boisson');
+  } catch(e){ afficherToast("Erreur : "+e.message, "erreur"); }
+};
+window.supprimerBoisson = function (id) {
+  if (!verifierDroit(['admin'], "Seul l'administrateur peut supprimer une boisson.")) return;
+  const b = ETAT.boissons.find(x=>x.id===id);
+  demanderConfirmation(`Supprimer définitivement "${b?.nom||''}" ?`, async () => {
+    try { await deleteDoc(doc(db,"drinks",id)); journaliser("Suppression boisson", b?.nom); afficherToast("Boisson supprimée.", "succes"); }
+    catch(e){ afficherToast("Erreur : "+e.message, "erreur"); }
+  });
+};
+function rafraichirTableBoissons() {
+  const recherche = (document.getElementById('recherche-boissons')?.value||"").toLowerCase();
+  const liste = ETAT.boissons.filter(b => (b.nom||'').toLowerCase().includes(recherche) || (b.categorie||'').toLowerCase().includes(recherche));
+  const peutSupprimer = ETAT.utilisateur.role === 'admin';
+  const corps = document.querySelector('#tbl-boissons tbody');
+  corps.innerHTML = liste.length ? liste.map(b => {
+    const st = statutStock(b);
+    return `<tr>
+      <td>${b.photo?`<img class="cell-photo" src="${echapperHTML(b.photo)}">`:`<div class="cell-photo"></div>`}</td>
+      <td><b>${echapperHTML(b.nom)}</b></td>
+      <td>${echapperHTML(b.categorie)}</td>
+      <td>${formaterFCFA(b.prixVente)}</td>
+      <td style="min-width:130px;">${b.quantite ?? 0}<div class="barre-stock"><div style="width:${st.pourcentage}%;background:${st.couleurBarre};"></div></div></td>
+      <td><span class="badge badge-${st.couleurBadge}">${st.texte}</span></td>
+      <td>
+        <button class="btn btn-sm btn-fantome" onclick="ouvrirModaleBoisson('${b.id}')">✏️</button>
+        ${peutSupprimer?`<button class="btn btn-sm btn-rubis" onclick="supprimerBoisson('${b.id}')">🗑️</button>`:''}
+      </td>
+    </tr>`;
+  }).join('') : `<tr><td colspan="7" class="vide-etat">Aucune boisson trouvée.</td></tr>`;
+}
+
+// ---------------------------------------------------------------------
+// 12. CAISSE / VENTES
+// ---------------------------------------------------------------------
+function rafraichirGrilleCaisse() {
+  const recherche = (document.getElementById('recherche-caisse')?.value||"").toLowerCase();
+  const articles = [
+    ...ETAT.produits.map(p=>({...p, type:'produit'})),
+    ...ETAT.boissons.map(b=>({...b, type:'boisson'}))
+  ].filter(a => (a.nom||'').toLowerCase().includes(recherche) && Number(a.quantite||0) > 0);
+  const grille = document.getElementById('grille-caisse-produits');
+  grille.innerHTML = articles.length ? articles.map(a => `
+    <div class="carte-produit-vente" onclick="ajouterAuPanier('${a.type}','${a.id}')">
+      <div class="nom">${echapperHTML(a.nom)}</div>
+      <div style="font-size:10.5px;color:var(--gris-txt);">${echapperHTML(a.categorie||'')} · Stock: ${a.quantite}</div>
+      <div class="prix">${formaterFCFA(a.prixVente)}</div>
+    </div>`).join('') : `<div class="vide-etat" style="grid-column:1/-1;">Aucun article disponible.</div>`;
+}
+window.ajouterAuPanier = function (type, id) {
+  const source = type === 'produit' ? ETAT.produits : ETAT.boissons;
+  const article = source.find(a=>a.id===id);
+  if (!article) return;
+  const ligneExistante = ETAT.panier.find(l => l.id === id && l.type === type);
+  const dejaDansPanier = ligneExistante ? ligneExistante.qte : 0;
+  if (dejaDansPanier + 1 > Number(article.quantite||0)) { afficherToast("Stock insuffisant pour cet article.", "alerte"); return; }
+  if (ligneExistante) ligneExistante.qte += 1;
+  else ETAT.panier.push({ id, type, nom:article.nom, prix:Number(article.prixVente), prixAchat:Number(article.prixAchat||0), qte:1, stockDispo:Number(article.quantite||0) });
+  rafraichirPanier();
+};
+window.modifierQtePanier = function (index, delta) {
+  const l = ETAT.panier[index]; if (!l) return;
+  const nouvelleQte = l.qte + delta;
+  if (nouvelleQte < 1) { ETAT.panier.splice(index,1); }
+  else if (nouvelleQte > l.stockDispo) { afficherToast("Stock insuffisant.", "alerte"); return; }
+  else l.qte = nouvelleQte;
+  rafraichirPanier();
+};
+window.retirerDuPanier = function (index) { ETAT.panier.splice(index,1); rafraichirPanier(); };
+window.viderPanier = function () { ETAT.panier = []; rafraichirPanier(); };
+
+function rafraichirPanier() {
+  const zone = document.getElementById('panier-lignes');
+  zone.innerHTML = ETAT.panier.length ? ETAT.panier.map((l,i) => `
+    <div class="panier-ligne">
+      <span class="nom">${echapperHTML(l.nom)}<div style="font-size:11px;color:var(--gris-txt);">${formaterFCFA(l.prix)} / unité</div></span>
+      <div class="qte-ctrl">
+        <button onclick="modifierQtePanier(${i},-1)">−</button>
+        <span>${l.qte}</span>
+        <button onclick="modifierQtePanier(${i},1)">+</button>
+      </div>
+      <b>${formaterFCFA(l.prix*l.qte)}</b>
+      <button class="btn btn-sm btn-fantome" onclick="retirerDuPanier(${i})">✕</button>
+    </div>`).join('') : `<div class="vide-etat">Le panier est vide.<br>Cliquez sur un article pour l'ajouter.</div>`;
+  recalculerPanier();
+}
+window.recalculerPanier = function () {
+  const sousTotal = ETAT.panier.reduce((s,l)=>s+l.prix*l.qte,0);
+  const remise = Number(document.getElementById('vente-remise')?.value)||0;
+  const tvaPourcent = Number(document.getElementById('vente-tva')?.value)||0;
+  const tvaMontant = Math.round((sousTotal - remise) * (tvaPourcent/100));
+  const total = Math.max(0, sousTotal - remise + tvaMontant);
+  document.getElementById('panier-soustotal').textContent = formaterFCFA(sousTotal);
+  document.getElementById('panier-remise-aff').textContent = "− " + formaterFCFA(remise);
+  document.getElementById('panier-tva-aff').textContent = formaterFCFA(tvaMontant);
+  document.getElementById('panier-total').textContent = formaterFCFA(total);
+  return { sousTotal, remise, tvaMontant, total };
+};
+
+window.validerVente = async function () {
+  if (!verifierDroit(['admin','gestionnaire','vendeur'])) return;
+  if (!ETAT.panier.length) { afficherToast("Le panier est vide.", "alerte"); return; }
+  const { sousTotal, remise, tvaMontant, total } = recalculerPanier();
+  const numero = "RL-" + dateISOAujourdhui().replace(/-/g,'') + "-" + Math.floor(1000+Math.random()*9000);
+  const client = document.getElementById('vente-client').value.trim() || "Client comptoir";
+  const vente = {
+    numero, client, total, sousTotal, remise, tva: tvaMontant,
+    vendeurId: ETAT.utilisateur.uid, vendeurNom: ETAT.utilisateur.nom,
+    lignes: ETAT.panier.map(l => ({ nom:l.nom, type:l.type, prix:l.prix, prixAchat:l.prixAchat, qte:l.qte, total:l.prix*l.qte })),
+    date: serverTimestamp(), dateLocale: new Date().toISOString(), statut: 'validee'
+  };
+  try {
+    // Décrémente le stock de chaque article vendu, puis enregistre la vente
+    for (const l of ETAT.panier) {
+      const coll = l.type === 'produit' ? 'products' : 'drinks';
+      await updateDoc(doc(db, coll, l.id), { quantite: increment(-l.qte) });
+    }
+    const refVente = await addDoc(collection(db,"sales"), vente);
+    journaliser("Vente", `${numero} — ${formaterFCFA(total)}`);
+    ETAT.derniereFacture = { ...vente, id: refVente.id, dateAffichee: new Date() };
+    afficherFacture(ETAT.derniereFacture);
+    ETAT.panier = [];
+    rafraichirPanier();
+    document.getElementById('vente-client').value = "";
+    document.getElementById('vente-remise').value = 0;
+    document.getElementById('vente-tva').value = 0;
+    afficherToast("Vente enregistrée : " + numero, "succes");
+  } catch(e){ afficherToast("Erreur lors de la vente : "+e.message, "erreur"); }
+};
+
+window.annulerVente = function (id) {
+  if (!verifierDroit(['admin'], "Seul l'administrateur peut annuler une vente.")) return;
+  const v = ETAT.ventes.find(x=>x.id===id);
+  demanderConfirmation(`Annuler la vente ${v?.numero||''} ? Le stock des articles sera restitué.`, async () => {
+    try {
+      for (const l of (v.lignes||[])) {
+        const coll = l.type === 'produit' ? 'products' : 'drinks';
+        const item = (l.type==='produit'?ETAT.produits:ETAT.boissons).find(a=>a.nom===l.nom);
+        if (item) await updateDoc(doc(db, coll, item.id), { quantite: increment(l.qte) });
+      }
+      await updateDoc(doc(db,"sales",id), { statut: 'annulee' });
+      journaliser("Annulation vente", v.numero);
+      afficherToast("Vente annulée et stock restitué.", "succes");
+    } catch(e){ afficherToast("Erreur : "+e.message, "erreur"); }
+  });
+};
+
+function rafraichirTableVentes() {
+  document.getElementById('compteur-ventes').textContent = " — " + ETAT.ventes.length + " ventes";
+  const corps = document.querySelector('#tbl-ventes tbody');
+  const liste = ETAT.utilisateur.role === 'vendeur' ? ETAT.ventes.filter(v=>v.vendeurId===ETAT.utilisateur.uid) : ETAT.ventes;
+  corps.innerHTML = liste.length ? liste.slice(0,100).map(v => `
+    <tr>
+      <td><b>${echapperHTML(v.numero)}</b>${v.statut==='annulee'?' <span class="badge badge-rouge">Annulée</span>':''}</td>
+      <td>${formaterDateHeure(v.dateLocale)}</td>
+      <td>${echapperHTML(v.vendeurNom)}</td>
+      <td>${echapperHTML(v.client)}</td>
+      <td><b>${formaterFCFA(v.total)}</b></td>
+      <td>
+        <button class="btn btn-sm btn-fantome" onclick="revoirFacture('${v.id}')">🧾</button>
+        ${ETAT.utilisateur.role==='admin' && v.statut!=='annulee' ? `<button class="btn btn-sm btn-rubis" onclick="annulerVente('${v.id}')">✕</button>`:''}
+      </td>
+    </tr>`).join('') : `<tr><td colspan="6" class="vide-etat">Aucune vente enregistrée.</td></tr>`;
+}
+window.revoirFacture = function (id) {
+  const v = ETAT.ventes.find(x=>x.id===id);
+  if (v) afficherFacture({ ...v, dateAffichee: new Date(v.dateLocale) });
+};
+
+// ---------------------------------------------------------------------
+// 13. FACTURE
+// ---------------------------------------------------------------------
+function afficherFacture(vente) {
+  const p = ETAT.parametres;
+  const zoneQrId = "qr-" + genererId();
+  document.getElementById('contenu-facture').innerHTML = `
+    <div class="facture-entete">
+      <div class="fl">RL</div>
+      <h3>${echapperHTML(p.nomResto || "Restaurant RoseLid Gestion")}</h3>
+      <div style="font-size:11px;color:#777;">${echapperHTML(p.adresse||'')}${p.adresse&&p.telephone?' · ':''}${echapperHTML(p.telephone||'')}</div>
+    </div>
+    <div style="display:flex;justify-content:space-between;font-size:11.5px;margin-bottom:6px;">
+      <span><b>Facture :</b> ${echapperHTML(vente.numero)}</span>
+      <span>${formaterDateHeure(vente.dateAffichee)}</span>
+    </div>
+    <div style="font-size:11.5px;margin-bottom:4px;"><b>Vendeur :</b> ${echapperHTML(vente.vendeurNom)}</div>
+    <div style="font-size:11.5px;margin-bottom:10px;"><b>Client :</b> ${echapperHTML(vente.client)}</div>
+    <table class="facture-lignes">
+      <thead><tr><th>Article</th><th>Qté</th><th>P.U.</th><th style="text-align:right;">Total</th></tr></thead>
+      <tbody>
+        ${(vente.lignes||[]).map(l=>`<tr><td>${echapperHTML(l.nom)}</td><td>${l.qte}</td><td>${formaterFCFA(l.prix)}</td><td style="text-align:right;">${formaterFCFA(l.total)}</td></tr>`).join('')}
+      </tbody>
+    </table>
+    <div style="font-size:12px;display:flex;justify-content:space-between;"><span>Sous-total</span><span>${formaterFCFA(vente.sousTotal)}</span></div>
+    <div style="font-size:12px;display:flex;justify-content:space-between;"><span>Remise</span><span>− ${formaterFCFA(vente.remise)}</span></div>
+    <div style="font-size:12px;display:flex;justify-content:space-between;"><span>TVA</span><span>${formaterFCFA(vente.tva)}</span></div>
+    <div class="facture-total"><span>TOTAL</span><span>${formaterFCFA(vente.total)}</span></div>
+    <div class="facture-qr" id="${zoneQrId}"></div>
+    <div class="facture-pied">Merci de votre confiance !<br>${echapperHTML(p.nomResto || "Restaurant RoseLid Gestion")} — Facture générée électroniquement</div>
+  `;
+  ETAT.derniereFacture = vente;
+  try {
+    new QRCode(document.getElementById(zoneQrId), {
+      text: `${p.nomResto||'RoseLid'} | ${vente.numero} | ${vente.total} FCFA | ${formaterDateHeure(vente.dateAffichee)}`,
+      width: 100, height: 100, colorDark:"#4A1222", colorLight:"#ffffff"
+    });
+  } catch(e){ console.warn("QR indisponible", e); }
+  ouvrirModale('modale-facture');
+}
+window.imprimerFacture = function () {
+  const contenu = document.getElementById('contenu-facture').innerHTML;
+  const fenetre = window.open('', '_blank', 'width=420,height=700');
+  fenetre.document.write(`<html><head><title>Facture</title><style>
+    body{font-family:Arial,sans-serif;padding:20px;color:#222;}
+    table{width:100%;border-collapse:collapse;font-size:12px;} td,th{padding:4px 2px;}
+    .facture-entete{text-align:center;border-bottom:2px solid #4A1222;padding-bottom:10px;margin-bottom:10px;}
+    .facture-entete .fl{width:50px;height:50px;border-radius:50%;margin:0 auto 6px;background:#4A1222;color:#C9A227;display:flex;align-items:center;justify-content:center;font-weight:800;}
+    .facture-total{display:flex;justify-content:space-between;font-weight:800;font-size:15px;border-top:2px solid #4A1222;padding-top:8px;margin-top:6px;}
+    .facture-qr{text-align:center;margin:14px 0;} .facture-qr img,.facture-qr canvas{margin:0 auto;}
+  </style></head><body>${contenu}</body></html>`);
+  fenetre.document.close();
+  setTimeout(()=>{ fenetre.print(); }, 400);
+};
+window.telechargerFacturePDF = function () {
+  const v = ETAT.derniereFacture;
+  if (!v) return;
+  const { jsPDF } = window.jspdf;
+  const pdf = new jsPDF({ unit:'mm', format:[80, 180] });
+  const p = ETAT.parametres;
+  let y = 10;
+  pdf.setFillColor(74,18,34); pdf.circle(40, y, 6, 'F');
+  pdf.setTextColor(201,162,39); pdf.setFontSize(9); pdf.setFont('helvetica','bold');
+  pdf.text('RL', 40, y+1.5, { align:'center' });
+  y += 12;
+  pdf.setTextColor(74,18,34); pdf.setFontSize(11);
+  pdf.text(p.nomResto || "Restaurant RoseLid Gestion", 40, y, { align:'center' });
+  y += 5; pdf.setFontSize(7); pdf.setTextColor(90,90,90); pdf.setFont('helvetica','normal');
+  if (p.adresse) { pdf.text(p.adresse, 40, y, { align:'center' }); y += 4; }
+  y += 2; pdf.setDrawColor(74,18,34); pdf.line(5,y,75,y); y += 5;
+  pdf.setFontSize(7.5); pdf.setTextColor(30,30,30);
+  pdf.text(`Facture: ${v.numero}`, 5, y); y += 4;
+  pdf.text(`${formaterDateHeure(v.dateAffichee)}`, 5, y); y += 4;
+  pdf.text(`Vendeur: ${v.vendeurNom}`, 5, y); y += 4;
+  pdf.text(`Client: ${v.client}`, 5, y); y += 5;
+  pdf.line(5,y,75,y); y += 4;
+  (v.lignes||[]).forEach(l => {
+    pdf.text(`${l.nom} x${l.qte}`, 5, y);
+    pdf.text(formaterFCFA(l.total), 75, y, { align:'right' });
+    y += 4;
+  });
+  pdf.line(5,y,75,y); y += 5;
+  pdf.text(`Sous-total: ${formaterFCFA(v.sousTotal)}`, 5, y); y += 4;
+  pdf.text(`Remise: -${formaterFCFA(v.remise)}`, 5, y); y += 4;
+  pdf.text(`TVA: ${formaterFCFA(v.tva)}`, 5, y); y += 5;
+  pdf.setFont('helvetica','bold'); pdf.setFontSize(10);
+  pdf.text(`TOTAL: ${formaterFCFA(v.total)}`, 5, y); y += 8;
+  pdf.setFont('helvetica','normal'); pdf.setFontSize(7);
+  pdf.text('Merci de votre confiance !', 40, y, { align:'center' });
+  pdf.save(`Facture_${v.numero}.pdf`);
+};
+window.partagerFactureWhatsApp = function () {
+  const v = ETAT.derniereFacture; if (!v) return;
+  const p = ETAT.parametres;
+  let texte = `🧾 *${p.nomResto||'Restaurant RoseLid Gestion'}*\n`;
+  texte += `Facture : ${v.numero}\nDate : ${formaterDateHeure(v.dateAffichee)}\nClient : ${v.client}\n\n`;
+  (v.lignes||[]).forEach(l => texte += `• ${l.nom} x${l.qte} — ${formaterFCFA(l.total)}\n`);
+  texte += `\nSous-total : ${formaterFCFA(v.sousTotal)}\nRemise : -${formaterFCFA(v.remise)}\nTVA : ${formaterFCFA(v.tva)}\n*TOTAL : ${formaterFCFA(v.total)}*\n\nMerci de votre confiance ! 🙏`;
+  const numero = (p.whatsappAdmin || WHATSAPP_ADMIN_DEFAUT).replace(/[^\d+]/g,'').replace('+','');
+  window.open(`https://wa.me/${numero}?text=${encodeURIComponent(texte)}`, '_blank');
+};
+
+// ---------------------------------------------------------------------
+// 14. RAPPORTS
+// ---------------------------------------------------------------------
+function plagesDates(type, dateBase) {
+  const base = dateBase ? new Date(dateBase) : new Date();
+  let debut, fin, titre;
+  if (type === 'journalier') { debut = new Date(base); debut.setHours(0,0,0,0); fin = new Date(base); fin.setHours(23,59,59,999); titre = "Rapport journalier — " + formaterDate(base); }
+  else if (type === 'hebdomadaire') {
+    const jour = base.getDay() || 7; debut = new Date(base); debut.setDate(base.getDate()-jour+1); debut.setHours(0,0,0,0);
+    fin = new Date(debut); fin.setDate(debut.getDate()+6); fin.setHours(23,59,59,999);
+    titre = "Rapport hebdomadaire — " + formaterDate(debut) + " au " + formaterDate(fin);
+  }
+  else if (type === 'annuel') { debut = new Date(base.getFullYear(),0,1); fin = new Date(base.getFullYear(),11,31,23,59,59); titre = "Rapport annuel — " + base.getFullYear(); }
+  else { debut = new Date(base.getFullYear(), base.getMonth(), 1); fin = new Date(base.getFullYear(), base.getMonth()+1, 0, 23,59,59); titre = "Rapport mensuel — " + base.toLocaleDateString('fr-FR',{month:'long',year:'numeric'}); }
+  return { debut, fin, titre };
+}
+
+function construireDonneesRapport(type, dateBase) {
+  const { debut, fin, titre } = plagesDates(['journalier','hebdomadaire','mensuel','annuel'].includes(type) ? type : 'mensuel', dateBase);
+  const ventesPeriode = ETAT.ventes.filter(v => v.dateLocale && new Date(v.dateLocale) >= debut && new Date(v.dateLocale) <= fin && v.statut !== 'annulee');
+  const ca = ventesPeriode.reduce((s,v)=>s+(v.total||0),0);
+  const benefices = calculerBenefices(ventesPeriode);
+  const stockTous = [...ETAT.produits.map(p=>({...p,type:'Plat'})), ...ETAT.boissons.map(b=>({...b,type:'Boisson'}))];
+
+  const base = { titre, debut, fin, genereLe: new Date() };
+
+  if (type === 'personnel') {
+    const pointagesPeriode = (ETAT.pointagesTous||[]).filter(p => { const d=new Date(p.date); return d>=debut && d<=fin; });
+    return { ...base, titre:"Rapport du personnel", type:'personnel',
+      lignes: ETAT.employes.map(e => {
+        const pts = pointagesPeriode.filter(p=>p.employeeId===e.id);
+        const retards = pts.filter(p=>p.statut==='retard').length;
+        return [e.nom, e.fonction, formaterFCFA(e.salaire), pts.length + ' jour(s)', retards + ' retard(s)'];
+      }), entetes:['Employé','Fonction','Salaire','Jours pointés','Retards'] };
+  }
+  if (type === 'ventes') {
+    return { ...base, type:'ventes',
+      lignes: ventesPeriode.map(v=>[v.numero, formaterDateHeure(v.dateLocale), v.vendeurNom, v.client, formaterFCFA(v.total)]),
+      entetes:['N° Facture','Date','Vendeur','Client','Total'], totalLigne: ['','','','TOTAL', formaterFCFA(ca)] };
+  }
+  if (type === 'financier') {
+    const coutMarchandises = ventesPeriode.reduce((s,v)=> s + (v.lignes||[]).reduce((s2,l)=>s2+(l.prixAchat||0)*l.qte,0), 0);
+    return { ...base, type:'financier',
+      lignes: [
+        ['Chiffre d\'affaires', formaterFCFA(ca)],
+        ['Coût des marchandises vendues', formaterFCFA(coutMarchandises)],
+        ['Bénéfice brut', formaterFCFA(benefices)],
+        ['Nombre de ventes', ventesPeriode.length],
+        ['Panier moyen', ventesPeriode.length ? formaterFCFA(Math.round(ca/ventesPeriode.length)) : formaterFCFA(0)],
+      ], entetes:['Indicateur','Valeur'] };
+  }
+  if (type === 'stock') {
+    return { ...base, type:'stock',
+      lignes: stockTous.map(p=>[p.nom, p.type, p.categorie, p.quantite, formaterFCFA(p.prixAchat*p.quantite), statutStock(p).texte]),
+      entetes:['Article','Type','Catégorie','Quantité','Valeur stock','Statut'],
+      totalLigne: ['','','','','TOTAL: '+formaterFCFA(stockTous.reduce((s,p)=>s+(p.prixAchat||0)*(p.quantite||0),0)),''] };
+  }
+  if (type === 'benefices') {
+    const parProduit = {};
+    ventesPeriode.forEach(v => (v.lignes||[]).forEach(l => {
+      if (!parProduit[l.nom]) parProduit[l.nom] = { qte:0, benef:0 };
+      parProduit[l.nom].qte += l.qte;
+      parProduit[l.nom].benef += (l.prix - (l.prixAchat||0)) * l.qte;
+    }));
+    return { ...base, type:'benefices',
+      lignes: Object.entries(parProduit).sort((a,b)=>b[1].benef-a[1].benef).map(([nom,d])=>[nom, d.qte, formaterFCFA(d.benef)]),
+      entetes:['Article','Quantité vendue','Bénéfice généré'], totalLigne:['','TOTAL', formaterFCFA(benefices)] };
+  }
+  if (type === 'pertes') {
+    const aujourdHui = new Date();
+    const perdus = stockTous.filter(p => p.dateSortie && new Date(p.dateSortie) <= aujourdHui && Number(p.quantite||0) > 0);
+    return { ...base, type:'pertes',
+      lignes: perdus.map(p=>[p.nom, p.type, p.quantite, formaterDate(p.dateSortie), formaterFCFA((p.prixAchat||0)*p.quantite)]),
+      entetes:['Article','Type','Quantité invendue','Date de péremption','Valeur perdue'],
+      totalLigne:['','','','TOTAL', formaterFCFA(perdus.reduce((s,p)=>s+(p.prixAchat||0)*p.quantite,0))] };
+  }
+  if (type === 'ruptures') {
+    const ruptures = stockTous.filter(p => statutStock(p).niveau === 'rouge');
+    return { ...base, type:'ruptures',
+      lignes: ruptures.map(p=>[p.nom, p.type, p.categorie, p.quantite, statutStock(p).texte]),
+      entetes:['Article','Type','Catégorie','Quantité restante','Statut'] };
+  }
+  // journalier / hebdomadaire / mensuel / annuel : rapport global
+  return { ...base, type:'global',
+    resume: [
+      ["Chiffre d'affaires", formaterFCFA(ca)],
+      ["Bénéfices", formaterFCFA(benefices)],
+      ["Nombre de ventes", ventesPeriode.length],
+      ["Produits en rupture", stockTous.filter(p=>statutStock(p).niveau==='rouge').length],
+      ["Valeur du stock", formaterFCFA(stockTous.reduce((s,p)=>s+(p.prixAchat||0)*(p.quantite||0),0))],
+    ],
+    lignes: ventesPeriode.map(v=>[v.numero, formaterDateHeure(v.dateLocale), v.vendeurNom, formaterFCFA(v.total)]),
+    entetes:['N° Facture','Date','Vendeur','Total']
+  };
+}
+
+window.genererRapport = function (format) {
+  if (!verifierDroit(['admin','gestionnaire'])) return;
+  const type = document.getElementById('rapport-type').value;
+  const dateBase = document.getElementById('rapport-date').value || dateISOAujourdhui();
+  const data = construireDonneesRapport(type, dateBase);
+  journaliser("Génération rapport", type + " (" + format + ")");
+  if (format === 'pdf') genererRapportPDF(data);
+  else genererRapportDOCX(data);
+  afficherApercuRapport(data);
+};
+
+function afficherApercuRapport(data) {
+  const carte = document.getElementById('apercu-rapport-carte');
+  const zone = document.getElementById('apercu-rapport');
+  let html = `<h3 style="font-family:var(--police-titre);color:var(--bordeaux);margin-bottom:10px;">${echapperHTML(data.titre)}</h3>`;
+  if (data.resume) {
+    html += `<div class="grille-3" style="margin-bottom:16px;">` + data.resume.map(([l,v])=>`<div class="carte" style="padding:10px;"><div style="font-size:11px;color:var(--gris-txt);">${echapperHTML(l)}</div><b>${v}</b></div>`).join('') + `</div>`;
+  }
+  html += `<div class="zone-tableau"><table class="tbl"><thead><tr>${(data.entetes||[]).map(e=>`<th>${echapperHTML(e)}</th>`).join('')}</tr></thead><tbody>`;
+  html += (data.lignes||[]).length ? data.lignes.map(l=>`<tr>${l.map(c=>`<td>${echapperHTML(c)}</td>`).join('')}</tr>`).join('') : `<tr><td colspan="10" class="vide-etat">Aucune donnée pour cette période.</td></tr>`;
+  if (data.totalLigne) html += `<tr style="font-weight:800;">${data.totalLigne.map(c=>`<td>${echapperHTML(c)}</td>`).join('')}</tr>`;
+  html += `</tbody></table></div>`;
+  zone.innerHTML = html;
+  carte.style.display = 'block';
+}
+
+function genererRapportPDF(data) {
+  const { jsPDF } = window.jspdf;
+  const pdf = new jsPDF({ unit:'mm', format:'a4' });
+  const p = ETAT.parametres;
+  const largeur = pdf.internal.pageSize.getWidth();
+
+  function entete() {
+    pdf.setFillColor(74,18,34); pdf.rect(0,0,largeur,24,'F');
+    pdf.setFillColor(201,162,39); pdf.circle(14,12,6,'F');
+    pdf.setTextColor(74,18,34); pdf.setFontSize(8); pdf.setFont('helvetica','bold'); pdf.text('RL',14,13.5,{align:'center'});
+    pdf.setTextColor(247,243,236); pdf.setFontSize(13); pdf.text(p.nomResto || "Restaurant RoseLid Gestion", 26, 11);
+    pdf.setFontSize(8); pdf.setFont('helvetica','normal'); pdf.text(data.titre, 26, 17);
+    pdf.setTextColor(232,197,105); pdf.setFontSize(7); pdf.text("Généré le " + formaterDateHeure(data.genereLe), largeur-10, 11, { align:'right' });
+  }
+  function pied(numeroPage) {
+    const hauteur = pdf.internal.pageSize.getHeight();
+    pdf.setDrawColor(201,162,39); pdf.line(10,hauteur-14,largeur-10,hauteur-14);
+    pdf.setFontSize(7.5); pdf.setTextColor(120,120,120);
+    pdf.text((p.nomResto||"Restaurant RoseLid Gestion") + " — Document confidentiel", 10, hauteur-9);
+    pdf.text("Page " + numeroPage, largeur-10, hauteur-9, { align:'right' });
+  }
+  entete();
+  let y = 32;
+  if (data.resume) {
+    pdf.setTextColor(74,18,34); pdf.setFontSize(11); pdf.setFont('helvetica','bold'); pdf.text("Résumé", 12, y); y += 4;
+    pdf.autoTable({
+      startY: y, margin:{left:12,right:12}, theme:'grid',
+      head: [['Indicateur','Valeur']], body: data.resume,
+      headStyles:{ fillColor:[74,18,34], textColor:[247,243,236], fontStyle:'bold' },
+      styles:{ fontSize:9, cellPadding:3 },
+      alternateRowStyles:{ fillColor:[247,243,236] }
+    });
+    y = pdf.lastAutoTable.finalY + 10;
+  }
+  pdf.setTextColor(74,18,34); pdf.setFontSize(11); pdf.setFont('helvetica','bold'); pdf.text("Détails", 12, y); y += 4;
+  const corpsTableau = data.totalLigne ? [...(data.lignes||[]), data.totalLigne] : (data.lignes||[]);
+  pdf.autoTable({
+    startY: y, margin:{left:12,right:12,bottom:20}, theme:'grid',
+    head: [data.entetes||[]], body: corpsTableau.length ? corpsTableau : [['Aucune donnée disponible']],
+    headStyles:{ fillColor:[201,162,39], textColor:[46,10,20], fontStyle:'bold' },
+    styles:{ fontSize:8.5, cellPadding:3 },
+    alternateRowStyles:{ fillColor:[247,243,236] },
+    didDrawPage: (d) => { if (d.pageNumber>1) entete(); pied(d.pageNumber); }
+  });
+  pied(1);
+  pdf.save(`${data.titre.replace(/[^\w\s-]/g,'').replace(/\s+/g,'_')}.pdf`);
+}
+
+async function genererRapportDOCX(data) {
+  if (!window.docx) { afficherToast("La librairie Word n'a pas pu être chargée (vérifiez votre connexion).", "erreur"); return; }
+  const { Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell, WidthType, AlignmentType, Header, Footer, PageNumber, ShadingType, HeadingLevel, BorderStyle } = window.docx;
+  const p = ETAT.parametres;
+  const COULEUR_BORDEAUX = "4A1222", COULEUR_OR = "C9A227", COULEUR_CREME = "F7F3EC";
+
+  function ligneTableau(cellules, estEntete=false) {
+    return new TableRow({
+      children: cellules.map(txt => new TableCell({
+        shading: estEntete ? { type: ShadingType.CLEAR, fill: COULEUR_BORDEAUX } : undefined,
+        margins: { top:80, bottom:80, left:100, right:100 },
+        children: [ new Paragraph({ children:[ new TextRun({ text:String(txt), bold: estEntete, color: estEntete ? "FFFFFF" : "222222", font:"Calibri", size:20 }) ] }) ]
+      }))
+    });
+  }
+  const lignesTable = [];
+  if (data.entetes) lignesTable.push(ligneTableau(data.entetes, true));
+  (data.lignes||[]).forEach(l => lignesTable.push(ligneTableau(l)));
+  if (data.totalLigne) lignesTable.push(ligneTableau(data.totalLigne));
+
+  const enfants = [
+    new Paragraph({ children:[ new TextRun({ text: p.nomResto || "Restaurant RoseLid Gestion", bold:true, size:36, color:COULEUR_BORDEAUX, font:"Calibri" }) ], alignment: AlignmentType.CENTER }),
+    new Paragraph({ children:[ new TextRun({ text: data.titre, bold:true, size:26, color:"555555", font:"Calibri" }) ], alignment: AlignmentType.CENTER, spacing:{ after:200 } }),
+    new Paragraph({ children:[ new TextRun({ text: "Généré le " + formaterDateHeure(data.genereLe), italics:true, size:18, color:"888888", font:"Calibri" }) ], alignment: AlignmentType.CENTER, spacing:{ after:300 } }),
+  ];
+  if (data.resume) {
+    enfants.push(new Paragraph({ children:[ new TextRun({ text:"Résumé", bold:true, size:24, color:COULEUR_BORDEAUX, font:"Calibri" }) ], spacing:{ before:200, after:120 } }));
+    enfants.push(new Table({ width:{ size:100, type:WidthType.PERCENTAGE }, rows: data.resume.map(([l,v])=>ligneTableau([l,v])) }));
+  }
+  enfants.push(new Paragraph({ children:[ new TextRun({ text:"Détails", bold:true, size:24, color:COULEUR_BORDEAUX, font:"Calibri" }) ], spacing:{ before:300, after:120 } }));
+  enfants.push(new Table({ width:{ size:100, type:WidthType.PERCENTAGE }, rows: lignesTable.length ? lignesTable : [ligneTableau(["Aucune donnée disponible"])] }));
+
+  const documentWord = new Document({
+    sections: [{
+      headers: { default: new Header({ children:[ new Paragraph({ children:[ new TextRun({ text:(p.nomResto||"Restaurant RoseLid Gestion")+" — Document interne", size:16, color:"999999", font:"Calibri" }) ], alignment: AlignmentType.RIGHT }) ] }) },
+      footers: { default: new Footer({ children:[ new Paragraph({ children:[ new TextRun({ text:"Page ", size:16, color:"999999", font:"Calibri" }), new TextRun({ children:[PageNumber.CURRENT], size:16, color:"999999", font:"Calibri" }) ], alignment: AlignmentType.CENTER }) ] }) },
+      children: enfants
+    }]
+  });
+  const blob = await Packer.toBlob(documentWord);
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `${data.titre.replace(/[^\w\s-]/g,'').replace(/\s+/g,'_')}.docx`;
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+}
+
+window.envoyerRapportWhatsApp = function () {
+  if (!verifierDroit(['admin','gestionnaire'])) return;
+  const data = construireDonneesRapport('journalier', dateISOAujourdhui());
+  const p = ETAT.parametres;
+  let texte = `📊 *${p.nomResto||'Restaurant RoseLid Gestion'}*\n*${data.titre}*\n\n`;
+  (data.resume||[]).forEach(([l,v]) => texte += `• ${l} : *${v}*\n`);
+  texte += `\nRapport généré automatiquement le ${formaterDateHeure(new Date())}.`;
+  const numeros = [p.whatsappAdmin || WHATSAPP_ADMIN_DEFAUT, ...(p.whatsappGestionnaires||[])].filter(Boolean);
+  numeros.forEach((num,i) => {
+    const propre = num.replace(/[^\d+]/g,'').replace('+','');
+    setTimeout(()=> window.open(`https://wa.me/${propre}?text=${encodeURIComponent(texte)}`, '_blank'), i*400);
+  });
+  journaliser("Envoi rapport WhatsApp", numeros.join(', '));
+};
+
+// ---------------------------------------------------------------------
+// 15. UTILISATEURS (créés uniquement par l'administrateur)
+// ---------------------------------------------------------------------
+window.ouvrirModaleUtilisateur = function () {
+  if (!verifierDroit(['admin'])) return;
+  ['user-nom','user-email','user-mdp'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('user-role').value = 'gestionnaire';
+  ouvrirModale('modale-utilisateur');
+};
+window.creerUtilisateur = async function () {
+  if (!verifierDroit(['admin'])) return;
+  const nom = document.getElementById('user-nom').value.trim();
+  const email = document.getElementById('user-email').value.trim();
+  const mdp = document.getElementById('user-mdp').value;
+  const role = document.getElementById('user-role').value;
+  if (!nom || !email || mdp.length < 6) { afficherToast("Vérifiez les champs (mot de passe : 6 caractères minimum).", "alerte"); return; }
+  try {
+    // Utilise une seconde instance Firebase pour ne pas déconnecter l'administrateur en cours
+    const appSecondaire = initializeApp(firebaseConfig, "AppSecondaireCreation_" + Date.now());
+    const authSecondaire = getAuth(appSecondaire);
+    const cred = await createUserWithEmailAndPassword(authSecondaire, email, mdp);
+    await setDoc(doc(db, "users", cred.user.uid), { nom, email, role, creeLe: serverTimestamp() });
+    await signOut(authSecondaire);
+    await deleteApp(appSecondaire);
+    journaliser("Création utilisateur", email + " (" + role + ")");
+    afficherToast("Compte créé avec succès pour " + nom + ".", "succes");
+    fermerModale('modale-utilisateur');
+  } catch (e) {
+    let msg = e.message;
+    if (e.code === 'auth/email-already-in-use') msg = "Cette adresse e-mail est déjà utilisée.";
+    afficherToast("Erreur : " + msg, "erreur");
+  }
+};
+window.supprimerUtilisateur = function (id, email) {
+  if (!verifierDroit(['admin'])) return;
+  if (email === EMAIL_ADMIN_PRINCIPAL) { afficherToast("Impossible de supprimer l'administrateur principal.", "erreur"); return; }
+  demanderConfirmation(`Supprimer l'accès de "${email}" ? (le compte d'authentification devra être supprimé manuellement dans la console Firebase)`, async () => {
+    try { await deleteDoc(doc(db,"users",id)); journaliser("Suppression profil utilisateur", email); afficherToast("Profil supprimé. Pensez à désactiver le compte dans Firebase Authentication.", "succes"); }
+    catch(e){ afficherToast("Erreur : "+e.message, "erreur"); }
+  });
+};
+function rafraichirTableUtilisateurs() {
+  const corps = document.querySelector('#tbl-utilisateurs tbody');
+  corps.innerHTML = ETAT.utilisateurs.length ? ETAT.utilisateurs.map(u => `
+    <tr>
+      <td>${echapperHTML(u.nom)}</td>
+      <td>${echapperHTML(u.email)}</td>
+      <td><span class="chip-role chip-${u.role}">${u.role}</span></td>
+      <td>${u.creeLe && u.creeLe.toDate ? formaterDate(u.creeLe.toDate()) : '—'}</td>
+      <td>${u.email !== EMAIL_ADMIN_PRINCIPAL ? `<button class="btn btn-sm btn-rubis" onclick="supprimerUtilisateur('${u.id}','${u.email}')">🗑️ Retirer</button>` : '<span class="badge badge-or">Protégé</span>'}</td>
+    </tr>`).join('') : `<tr><td colspan="5" class="vide-etat">Aucun utilisateur.</td></tr>`;
+}
+
+// ---------------------------------------------------------------------
+// 16. PARAMÈTRES (Restaurant, WhatsApp, Sauvegarde)
+// ---------------------------------------------------------------------
+window.basculerOngletParametres = function (id) {
+  document.querySelectorAll('#vue-parametres .onglet').forEach(o=>o.classList.toggle('actif', o.dataset.onglet===id));
+  document.querySelectorAll('#vue-parametres .onglet-contenu').forEach(o=>o.style.display='none');
+  document.getElementById('onglet-'+id).style.display='block';
+};
+function chargerFormulaireParametres() {
+  const p = ETAT.parametres;
+  document.getElementById('param-nom-resto').value = p.nomResto || "Restaurant RoseLid Gestion";
+  document.getElementById('param-adresse-resto').value = p.adresse || "";
+  document.getElementById('param-tel-resto').value = p.telephone || "";
+  document.getElementById('param-heure-fermeture').value = p.heureFermetureNormale || "";
+  document.getElementById('param-whatsapp-admin').value = p.whatsappAdmin || WHATSAPP_ADMIN_DEFAUT;
+  const zoneGest = document.getElementById('liste-whatsapp-gestionnaires');
+  zoneGest.innerHTML = "";
+  (p.whatsappGestionnaires && p.whatsappGestionnaires.length ? p.whatsappGestionnaires : ['']).forEach(num => ajouterChampWhatsAppGestionnaire(num));
+}
+window.ajouterChampWhatsAppGestionnaire = function (valeur = "") {
+  const zone = document.getElementById('liste-whatsapp-gestionnaires');
+  const div = document.createElement('div');
+  div.className = 'champ'; div.style.display='flex'; div.style.gap='8px';
+  div.innerHTML = `<input type="text" class="whatsapp-gestionnaire" placeholder="+229..." value="${echapperHTML(valeur)}" style="flex:1;"><button class="btn btn-sm btn-rubis" type="button" onclick="this.parentElement.remove()">✕</button>`;
+  zone.appendChild(div);
+};
+window.enregistrerParametresGeneraux = async function () {
+  if (!verifierDroit(['admin'])) return;
+  const data = {
+    nomResto: document.getElementById('param-nom-resto').value.trim() || "Restaurant RoseLid Gestion",
+    adresse: document.getElementById('param-adresse-resto').value.trim(),
+    telephone: document.getElementById('param-tel-resto').value.trim(),
+    heureFermetureNormale: document.getElementById('param-heure-fermeture').value
+  };
+  await setDoc(doc(db,"settings","config"), data, { merge:true });
+  journaliser("Modification paramètres restaurant");
+  afficherToast("Paramètres enregistrés.", "succes");
+};
+window.enregistrerParametresWhatsApp = async function () {
+  if (!verifierDroit(['admin'])) return;
+  const numeros = [...document.querySelectorAll('.whatsapp-gestionnaire')].map(i=>i.value.trim()).filter(Boolean);
+  const data = { whatsappAdmin: document.getElementById('param-whatsapp-admin').value.trim() || WHATSAPP_ADMIN_DEFAUT, whatsappGestionnaires: numeros };
+  await setDoc(doc(db,"settings","config"), data, { merge:true });
+  journaliser("Modification paramètres WhatsApp");
+  afficherToast("Numéros WhatsApp enregistrés.", "succes");
+};
+
+window.exporterSauvegardeJSON = function () {
+  if (!verifierDroit(['admin'])) return;
+  const sauvegarde = { exporteLe: new Date().toISOString(), employes: ETAT.employes, produits: ETAT.produits, boissons: ETAT.boissons, ventes: ETAT.ventes, parametres: ETAT.parametres };
+  const blob = new Blob([JSON.stringify(sauvegarde, null, 2)], { type:'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = `Sauvegarde_RoseLid_${dateISOAujourdhui()}.json`;
+  document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+  journaliser("Export sauvegarde JSON");
+  afficherToast("Sauvegarde exportée.", "succes");
+};
+window.restaurerSauvegardeJSON = function (evt) {
+  if (!verifierDroit(['admin'])) return;
+  const fichier = evt.target.files[0]; if (!fichier) return;
+  demanderConfirmation("Restaurer cette sauvegarde ? Les données actuelles ne seront pas supprimées automatiquement ; les éléments de la sauvegarde seront rajoutés.", () => {
+    const lecteur = new FileReader();
+    lecteur.onload = async (e) => {
+      try {
+        const data = JSON.parse(e.target.result);
+        for (const emp of (data.employes||[])) { const {id, ...reste} = emp; await addDoc(collection(db,"employees"), reste); }
+        for (const p of (data.produits||[])) { const {id, ...reste} = p; await addDoc(collection(db,"products"), reste); }
+        for (const b of (data.boissons||[])) { const {id, ...reste} = b; await addDoc(collection(db,"drinks"), reste); }
+        journaliser("Restauration sauvegarde JSON");
+        afficherToast("Sauvegarde restaurée avec succès.", "succes");
+      } catch(err){ afficherToast("Fichier invalide : "+err.message, "erreur"); }
+    };
+    lecteur.readAsText(fichier);
+  });
+};
+
+// ---------------------------------------------------------------------
+// 17. HORLOGE & DIVERS UI
+// ---------------------------------------------------------------------
+function demarrerHorloge() {
+  function tick() {
+    const maintenant = new Date();
+    document.getElementById('horloge-topbar').textContent = maintenant.toLocaleDateString('fr-FR',{weekday:'short',day:'2-digit',month:'short'}) + " — " + maintenant.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+  }
+  tick(); setInterval(tick, 30000);
+}
+document.getElementById('annee-pied').textContent = new Date().getFullYear();
+demarrerHorloge();
+
+// ---------------------------------------------------------------------
+// 18. PWA — INSTALLATION & SERVICE WORKER
+// ---------------------------------------------------------------------
+let evenementInstallDiffere = null;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  evenementInstallDiffere = e;
+  if (!localStorage.getItem('rl_install_masque')) {
+    document.getElementById('banniere-install').classList.add('actif');
+  }
+});
+window.installerPWA = async function () {
+  if (!evenementInstallDiffere) { afficherToast("L'installation n'est pas disponible sur ce navigateur pour le moment.", "info"); return; }
+  evenementInstallDiffere.prompt();
+  await evenementInstallDiffere.userChoice;
+  evenementInstallDiffere = null;
+  document.getElementById('banniere-install').classList.remove('actif');
+};
+window.masquerBanniereInstall = function () {
+  document.getElementById('banniere-install').classList.remove('actif');
+  localStorage.setItem('rl_install_masque','1');
+};
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(err => console.warn('Service worker non enregistré :', err));
+  });
+}
+
+</script>
+</body>
+</html>
